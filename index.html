@@ -2037,6 +2037,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.c
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
+    document.querySelectorAll('.contents-arrow').forEach(el => el.textContent = t['contents.arrow'] || el.textContent);
     localStorage.setItem('ryoga_lang', lang);
   }
 
