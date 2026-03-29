@@ -140,6 +140,40 @@
     transition: all 0.2s; white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; gap: 8px;
   }
   .vpb-btn:hover { background: var(--gold-light); box-shadow: 0 0 20px rgba(245,196,0,0.5); transform: translateY(-2px); }
+  /* ===== COUNTDOWN TIMER ===== */
+.vpb-countdown { display: flex; align-items: center; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.vpb-countdown-label { font-family: var(--font-sub); font-size: 0.65rem; letter-spacing: 2px; font-weight: 700; color: var(--gray); }
+.countdown-units { display: flex; gap: 4px; align-items: center; }
+.countdown-unit { display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); border: 1px solid rgba(245,196,0,0.3); padding: 2px 6px; min-width: 36px; }
+.countdown-num { font-family: var(--font-en); font-size: 1.1rem; color: var(--gold); line-height: 1; }
+.countdown-lbl { font-family: var(--font-sub); font-size: 0.5rem; letter-spacing: 1px; color: var(--gray); }
+.countdown-sep { font-family: var(--font-en); font-size: 1rem; color: var(--gold); opacity: 0.6; }
+.countdown-expired { font-family: var(--font-jp); font-size: 0.75rem; color: var(--gray); }
+
+/* ===== TWITTER TIMELINE + SHARE SECTION ===== */
+#top-social { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 0; position: relative; }
+#top-social::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+.top-social-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.social-col-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.social-col-icon { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.social-col-icon.x-icon { background: #1d9bf0; }
+.social-col-title { font-family: var(--font-en); font-size: 1.1rem; letter-spacing: 4px; color: var(--white); }
+.social-col-sub { font-family: var(--font-jp); font-size: 0.72rem; color: var(--gray); margin-top: 2px; }
+.twitter-embed-wrap { border: 1px solid var(--border); overflow: hidden; background: var(--panel); max-height: 480px; }
+.twitter-embed-wrap iframe { display: block; }
+.share-grid { display: flex; flex-direction: column; gap: 10px; }
+.share-btn { display: flex; align-items: center; gap: 14px; background: var(--panel); border: 1px solid var(--border); text-decoration: none; color: var(--white); padding: 14px 18px; transition: all 0.25s; position: relative; overflow: hidden; }
+.share-btn::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #1d9bf0; transition: width 0.25s; }
+.share-btn:hover { border-color: rgba(29,155,240,0.5); background: rgba(29,155,240,0.08); transform: translateX(4px); }
+.share-btn:hover::before { width: 5px; }
+.share-btn-icon { font-size: 1.1rem; flex-shrink: 0; }
+.share-btn-body { flex: 1; min-width: 0; }
+.share-btn-tag { font-family: var(--font-sub); font-size: 0.65rem; letter-spacing: 3px; font-weight: 700; color: #1d9bf0; margin-bottom: 3px; }
+.share-btn-label { font-family: var(--font-jp); font-size: 0.82rem; font-weight: 700; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.share-btn-arrow { font-family: var(--font-sub); font-size: 0.85rem; color: var(--gray); transition: transform 0.2s; flex-shrink: 0; }
+.share-btn:hover .share-btn-arrow { transform: translateX(4px); color: #1d9bf0; }
+@media (max-width: 900px) { .top-social-inner { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 600px) { .top-social-inner { padding: 0 20px; } }
 
   /* ===== HERO ===== */
   #top { min-height: 85vh; position: relative; display: flex; align-items: center; overflow: hidden; }
@@ -716,6 +750,19 @@
   </div>
 </div>
 
+  <div class="vpb-countdown">
+  <span class="vpb-countdown-label" id="cdLabel">投票終了まで</span>
+  <div class="countdown-units" id="countdownUnits">
+    <div class="countdown-unit"><div class="countdown-num" id="cdDays">--</div><div class="countdown-lbl">DAYS</div></div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit"><div class="countdown-num" id="cdHours">--</div><div class="countdown-lbl">HRS</div></div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit"><div class="countdown-num" id="cdMins">--</div><div class="countdown-lbl">MIN</div></div>
+    <span class="countdown-sep">:</span>
+    <div class="countdown-unit"><div class="countdown-num" id="cdSecs">--</div><div class="countdown-lbl">SEC</div></div>
+  </div>
+</div>
+
 <!-- HERO -->
 <section id="top">
   <div class="hero-bg"></div>
@@ -749,6 +796,86 @@
   </div>
 </section>
 
+<!-- TOP SOCIAL: Twitter Timeline + Share Buttons -->
+<div id="top-social">
+  <div class="top-social-inner">
+
+    <div class="twitter-col">
+      <div class="social-col-head">
+        <div class="social-col-icon x-icon">𝕏</div>
+        <div>
+          <div class="social-col-title">LATEST POSTS</div>
+          <div class="social-col-sub">飯塚亮賀FD【りょがサポ】最新情報</div>
+        </div>
+      </div>
+      <div class="twitter-embed-wrap">
+        <a class="twitter-timeline"
+           data-theme="dark"
+           data-chrome="noheader nofooter noborders"
+           data-tweet-limit="5"
+           data-height="480"
+           href="https://twitter.com/IIZUKARYOGAFB">
+          Tweets by @IIZUKARYOGAFB
+        </a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+
+    <div class="share-col">
+      <div class="social-col-head">
+        <div class="social-col-icon x-icon">🔗</div>
+        <div>
+          <div class="social-col-title">SHARE & CHEER</div>
+          <div class="social-col-sub">タップして亮賀くんを応援・拡散しよう</div>
+        </div>
+      </div>
+      <div class="share-grid">
+        <a href="https://x.gd/u3GWs" target="_blank" rel="noopener noreferrer" class="share-btn">
+          <div class="share-btn-icon">📌</div>
+          <div class="share-btn-body">
+            <div class="share-btn-tag">応援タグ</div>
+            <div class="share-btn-label">#りょがサポで亮賀にアシストを</div>
+          </div>
+          <div class="share-btn-arrow">→</div>
+        </a>
+        <a href="https://x.gd/LH8Gu" target="_blank" rel="noopener noreferrer" class="share-btn">
+          <div class="share-btn-icon">📌</div>
+          <div class="share-btn-body">
+            <div class="share-btn-tag">布教タグ</div>
+            <div class="share-btn-label">#亮賀への愛がたいりょうが</div>
+          </div>
+          <div class="share-btn-arrow">→</div>
+        </a>
+        <a href="https://x.gd/qcSj3w" target="_blank" rel="noopener noreferrer" class="share-btn">
+          <div class="share-btn-icon">📌</div>
+          <div class="share-btn-body">
+            <div class="share-btn-tag">応援タグ + 布教タグ</div>
+            <div class="share-btn-label">#りょがサポ × #亮賀への愛がたいりょうが</div>
+          </div>
+          <div class="share-btn-arrow">→</div>
+        </a>
+        <a href="https://x.gd/BlcuO" target="_blank" rel="noopener noreferrer" class="share-btn">
+          <div class="share-btn-icon">📌</div>
+          <div class="share-btn-body">
+            <div class="share-btn-tag">応援 + 布教 + 名前 + 番組タグ</div>
+            <div class="share-btn-label">#飯塚亮賀 #PRODUCE101JAPAN新世界 他</div>
+          </div>
+          <div class="share-btn-arrow">→</div>
+        </a>
+        <a href="https://x.gd/HIVaw" target="_blank" rel="noopener noreferrer" class="share-btn">
+          <div class="share-btn-icon">🌏</div>
+          <div class="share-btn-body">
+            <div class="share-btn-tag">GLOBAL</div>
+            <div class="share-btn-label">海外向け / For international fans</div>
+          </div>
+          <div class="share-btn-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+  
 <!-- NEXT EPISODE BANNER -->
 <div class="next-ep">
   <!-- ティッカー行 -->
@@ -1708,6 +1835,42 @@ document.querySelectorAll('.zoomable').forEach(wrap => {
 document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
 lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+
+  // ===== Countdown Timer =====
+// ↓ 投票終了日時を変更する場合はここを書き換え（JST）
+const VOTE_DEADLINE = new Date('2026-04-17T04:00:00+09:00');
+
+const cdDays  = document.getElementById('cdDays');
+const cdHours = document.getElementById('cdHours');
+const cdMins  = document.getElementById('cdMins');
+const cdSecs  = document.getElementById('cdSecs');
+const cdUnits = document.getElementById('countdownUnits');
+const cdLabel = document.getElementById('cdLabel');
+
+const cdLabels = {
+  ja: '投票終了まで', ko: '투표 종료까지', en: 'Voting ends in', zh: '投票截止倒计时'
+};
+
+function updateCountdown() {
+  const now  = new Date();
+  const diff = VOTE_DEADLINE - now;
+  const lang = localStorage.getItem('ryoga_lang') || 'ja';
+  if (cdLabel) cdLabel.textContent = cdLabels[lang] || cdLabels.ja;
+  if (diff <= 0) {
+    if (cdUnits) cdUnits.innerHTML = '<span class="countdown-expired">投票期間終了</span>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  if (cdDays)  cdDays.textContent  = String(d).padStart(2,'0');
+  if (cdHours) cdHours.textContent = String(h).padStart(2,'0');
+  if (cdMins)  cdMins.textContent  = String(m).padStart(2,'0');
+  if (cdSecs)  cdSecs.textContent  = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
   
   const banner = document.getElementById('vote-period-banner');
 
