@@ -1863,7 +1863,6 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.c
 
   // ===== Countdown Timer =====
 // ↓ 投票終了日時を変更する場合はここを書き換え（JST）
-const VOTE_DEADLINE = new Date('2026-04-17T04:00:00+09:00');
 
 // ===== Countdown Timer（毎日0時リセット） =====
 const cdDays  = document.getElementById('cdDays');
@@ -1897,9 +1896,9 @@ function updateCountdown() {
   const m = Math.floor((diff % 3600000) / 60000);
   const s = Math.floor((diff % 60000) / 1000);
 
-  if (cdDays)  cdDays.textContent  = String(h).padStart(2,'0');
-  if (cdHours) cdHours.textContent = String(m).padStart(2,'0');
-  if (cdMins)  cdMins.textContent  = String(s).padStart(2,'0');
+  if (cdHours) cdHours.textContent = String(h).padStart(2,'0');
+  if (cdMins)  cdMins.textContent  = String(m).padStart(2,'0');
+  if (cdSecs)  cdSecs.textContent  = String(s).padStart(2,'0');
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
