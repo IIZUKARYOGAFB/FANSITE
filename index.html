@@ -604,6 +604,16 @@
   .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal-left.visible { opacity: 1; transform: translateX(0); }
 
+  /* ===== LANGUAGE SWITCHER ===== */
+  .lang-switcher { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
+  .lang-btn { font-family: var(--font-sub); font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; color: var(--gray); background: none; border: 1px solid transparent; cursor: pointer; padding: 4px 8px; transition: all 0.2s; line-height: 1; }
+  .lang-btn:hover { color: var(--blue); border-color: var(--border); }
+  .lang-btn.active { color: var(--blue); border-color: var(--border); background: rgba(0,180,255,0.08); }
+  .lang-divider { color: var(--border); font-size: 0.7rem; pointer-events: none; }
+  .lang-switcher-mobile { display: flex; align-items: center; gap: 8px; padding: 14px 40px; border-bottom: 2px solid var(--border); background: rgba(0,180,255,0.04); flex-wrap: wrap; }
+  .lang-switcher-mobile .lang-label { font-family: var(--font-sub); font-size: 0.65rem; letter-spacing: 3px; color: var(--gray); margin-right: 4px; font-weight: 700; }
+  .lang-switcher-mobile .lang-btn { font-size: 0.78rem; padding: 5px 10px; }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) { .sns-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 900px) {
@@ -651,7 +661,16 @@
     <a href="#community">COMMUNITY</a>
   </nav>
   <div class="header-right">
-    <a href="#vote" class="vote-btn">★ VOTE NOW</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ja">JA</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="ko">KO</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-divider">|</span>
+      <button class="lang-btn" data-lang="zh">ZH</button>
+    </div>
+    <a href="#vote" class="vote-btn" data-i18n="nav.voteBtn">★ VOTE NOW</a>
     <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く">
       <span></span><span></span><span></span>
     </button>
@@ -660,6 +679,13 @@
 
 <!-- MOBILE DRAWER -->
 <nav class="nav-mobile" id="navMobile">
+  <div class="lang-switcher-mobile">
+    <span class="lang-label">LANG</span>
+    <button class="lang-btn active" data-lang="ja">JA</button>
+    <button class="lang-btn" data-lang="ko">KO</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="zh">ZH</button>
+  </div>
   <a href="#top" onclick="closeMobileMenu()">TOP</a>
   <a href="#story" onclick="closeMobileMenu()">STORY</a>
   <a href="#character" onclick="closeMobileMenu()">CHARACTER</a>
@@ -676,14 +702,14 @@
     <div class="vpb-left">
       <div class="vpb-badge">VOTING OPEN</div>
       <div>
-        <div class="vpb-heading">第1回投票 開催中！🗳️</div>
-        <div class="vpb-detail">
+        <div class="vpb-heading" data-i18n="vpb.heading">第1回投票 開催中！🗳️</div>
+        <div class="vpb-detail" data-i18n-html="vpb.detail">
           <strong>投票期間：〜 4月17日 (金) 4:00 まで</strong><br>
           毎日 0:00 以降に飯塚亮賀くんへの投票が可能！<span class="highlight">1日2票</span>、毎日欠かさず投票しよう！
         </div>
       </div>
     </div>
-    <a href="#vote" class="vpb-btn">★ VOTE NOW →</a>
+    <a href="#vote" class="vpb-btn" data-i18n="vpb.btn">★ VOTE NOW →</a>
   </div>
 </div>
 
@@ -695,18 +721,18 @@
   <div class="glow-orb" style="width:300px;height:300px;background:rgba(0,180,255,0.1);left:10%;top:20%;animation-delay:-2s;"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-tag">飯塚亮賀FD【りょがサポ】有志FANSITE</div>
-      <div class="hero-name-jp">飯塚 亮賀</div>
+      <div class="hero-tag" data-i18n="hero.tag">飯塚亮賀FD【りょがサポ】有志FANSITE</div>
+      <div class="hero-name-jp" data-i18n="hero.nameJp">飯塚 亮賀</div>
       <div class="hero-name-en">IIZUKA<br><span>RYOGA</span></div>
       <div class="hero-num">TRAINEE — FAN DOSSIER</div>
-      <p class="hero-desc">
+      <p class="hero-desc" data-i18n-html="hero.desc">
         PRODUCE 101 JAPAN 新世界に挑戦中の練習生<br>
         抜群のビジュアルで放送開始前から話題に！<br>
         まっさら未経験の飯塚亮賀の伸びしろは無限大！！
       </p>
       <div class="hero-actions">
-        <a href="#vote" class="btn-primary">★ 投票する</a>
-        <a href="#story" class="btn-secondary">▶ STORYを見る</a>
+        <a href="#vote" class="btn-primary" data-i18n="hero.btnVote">★ 投票する</a>
+        <a href="#story" class="btn-secondary" data-i18n="hero.btnStory">▶ STORYを見る</a>
       </div>
     </div>
     <div class="hero-right">
@@ -745,9 +771,9 @@
 
     <!-- テキストコンテンツ -->
     <div class="next-ep-content">
-      <div class="next-ep-date">4月2日（木） 21:00〜</div>
-      <div class="next-ep-title">次回予告：クラス再編成</div>
-      <div class="next-ep-desc">
+      <div class="next-ep-date" data-i18n="nextep.date">4月2日（木） 21:00〜</div>
+      <div class="next-ep-title" data-i18n="nextep.title">次回予告：クラス再編成</div>
+      <div class="next-ep-desc" data-i18n-html="nextep.desc">
         初めてのレベル分けをCクラスで終えた亮賀。<br>
         しかし、立ち止まっている暇はない。息つく間もなく、運命の「クラス再編成」が幕を開ける！<br>
         立ちはだかる壁を前に、彼はいったいどうなるのか？ 果たして再評価の行方は……！？<br>
@@ -763,19 +789,19 @@
     <div class="section-head reveal">
       <div class="section-num">01 — EPISODE RECORD</div>
       <div class="section-title" data-text="STORY">STORY</div>
-      <div class="section-title-jp">番組での軌跡</div>
+      <div class="section-title-jp" data-i18n="story.sub">番組での軌跡</div>
     </div>
     <div class="story-grid">
 
     <div class="story-ep-body">
       <div class="ep-tag">EP.01</div>
-      <div class="ep-title">第1話：何者でもない僕</div>
-      <p class="ep-desc">ずっとサッカーばかりしてきた少年が、ある日突然アイドルを目指したら？<br>
+      <div class="ep-title" data-i18n="ep01.title">第1話：何者でもない僕</div>
+      <p class="ep-desc" data-i18n-html="ep01.desc">ずっとサッカーばかりしてきた少年が、ある日突然アイドルを目指したら？<br>
         「新世界」で目覚めた飯塚亮賀は、右も左もわからないまま『FRESH-MEN』として最初のレベル分けステージに立つ。<br>
         目の前に広がる景色に目を輝かせながら彼が届けたのは、朝の光のように真っ直ぐで爽やかな歌声だった。<br>
         披露した『はじめまして』への評価は、Cクラス。まだまだ未完成。だからこそ目が離せない。<br>
         これは、一人の少年がアイドルとして世界へ羽ばたくまでの、記念すべき最初の1ページ。</p>
-      <div class="ep-result good">★ 初回レベル分けチーム『FRESH-MEN』（飯塚亮賀、照井康祐、山下柊、増田倫希、岡田侑磨、小林蓮翔）<br>
+      <div class="ep-result good" data-i18n-html="ep01.result">★ 初回レベル分けチーム『FRESH-MEN』（飯塚亮賀、照井康祐、山下柊、増田倫希、岡田侑磨、小林蓮翔）<br>
       ★ 初回レベル分け評価：Cクラス</div>
       <div class="ep-num">01</div>
     </div>
@@ -786,7 +812,7 @@
 
 </div>
     <div class="diamond-divider"><span></span></div>
-    <div style="text-align:center;margin-top:20px;"><p style="font-size:0.8rem;color:var(--gray);">※ エピソードは随時追加・更新されます</p></div>
+    <div style="text-align:center;margin-top:20px;"><p style="font-size:0.8rem;color:var(--gray);" data-i18n="story.note">※ エピソードは随時追加・更新されます</p></div>
   </div>
 </section>
 
@@ -797,7 +823,7 @@
     <div class="section-head reveal">
       <div class="section-num">02 — PROFILE</div>
       <div class="section-title" data-text="CHARACTER">CHARACTER</div>
-      <div class="section-title-jp">飯塚亮賀くんプロフィール紹介</div>
+      <div class="section-title-jp" data-i18n="char.sub">飯塚亮賀くんプロフィール紹介</div>
     </div>
     <div class="char-layout">
       <div class="char-carousel reveal-left">
@@ -889,16 +915,16 @@
           <div class="profile-name-jp">飯塚 亮賀</div>
           <div class="profile-name-en">IIZUKA RYOGA</div>
           <ul class="profile-items">
-            <li><span class="label">生年月日</span><span class="value">2005/01/21</span></li>
-            <li><span class="label">出身地</span><span class="value">群馬県</span></li>
-            <li><span class="label">身長</span><span class="value">175</span></li>
-            <li><span class="label">趣味</span><span class="value">アニメ鑑賞、サッカー、ゲーム</span></li>
-            <li><span class="label">特技</span><span class="value">サッカーボールを頭の上に乗せて歩くこと</span></li>
-            <li><span class="label">MBTI</span><span class="value">INTP（論理学者）</span></li>
+            <li><span class="label" data-i18n="prof.dob">生年月日</span><span class="value">2005/01/21</span></li>
+            <li><span class="label" data-i18n="prof.origin">出身地</span><span class="value" data-i18n="prof.originVal">群馬県</span></li>
+            <li><span class="label" data-i18n="prof.height">身長</span><span class="value">175cm</span></li>
+            <li><span class="label" data-i18n="prof.hobby">趣味</span><span class="value" data-i18n="prof.hobbyVal">アニメ鑑賞、サッカー、ゲーム</span></li>
+            <li><span class="label" data-i18n="prof.skill">特技</span><span class="value" data-i18n="prof.skillVal">サッカーボールを頭の上に乗せて歩くこと</span></li>
+            <li><span class="label">MBTI</span><span class="value" data-i18n="prof.mbti">INTP（論理学者）</span></li>
           </ul>
           <div class="profile-tags">
-            <span class="tag">⚽ サッカー好き</span>
-            <span class="tag">🤓 ヲタク</span>
+            <span class="tag" data-i18n="tag.soccer">⚽ サッカー好き</span>
+            <span class="tag" data-i18n="tag.otaku">🤓 ヲタク</span>
             <span class="tag">💙 FRESH-MEN</span>
           </div>
           <div class="stats">
@@ -906,7 +932,7 @@
             <div class="stat-item"><div class="stat-label">VISUAL <span>S</span></div><div class="stat-bar"><div class="stat-fill" style="width:100%;animation-delay:0.2s;"></div></div></div>
             <div class="stat-item"><div class="stat-label">POTENTIAL <span>S</span></div><div class="stat-bar"><div class="stat-fill" style="width:100%;animation-delay:0.4s;background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div></div></div>
             <div class="stat-item"><div class="stat-label">SWEET VOICE <span>S</span></div><div class="stat-bar"><div class="stat-fill" style="width:100%;animation-delay:0.6s;"></div></div></div>
-            <p style="font-size:0.65rem;color:var(--gray);margin-top:10px;text-align:right;">※ファンによる独自評価</p>
+            <p style="font-size:0.65rem;color:var(--gray);margin-top:10px;text-align:right;" data-i18n="prof.fanEval">※ファンによる独自評価</p>
           </div>
         </div>
       </div>
@@ -920,7 +946,7 @@
     <div class="section-head reveal">
       <div class="section-num">03 — ARCHIVE</div>
       <div class="section-title" data-text="MOVIE">MOVIE</div>
-      <div class="section-title-jp">動画アーカイブ</div>
+      <div class="section-title-jp" data-i18n="movie.sub">動画アーカイブ</div>
     </div>
     <div class="movie-grid">
 
@@ -932,11 +958,11 @@
           <div class="play-icon"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="25" r="23" stroke-width="2"/><polygon points="20,15 38,25 20,35" fill="white" stroke="none"/></svg></div>
         </div>
         <div class="movie-info">
-          <div class="featured-label">目指せ20万回再生！</b></div>
+          <div class="featured-label" data-i18n="movie.featuredLabel">目指せ20万回再生！</div>
           <div class="movie-tag">PRODUCE 101 JAPAN 新世界</div>
           <div class="movie-title">推しカメラ｜RYOGA ( 飯塚 亮賀 )｜新世界 (SHINSEKAI)</div>
           <div class="movie-date">2026.02.22</div>
-          <div class="movie-desc">亮賀くんの記念すべき初の推しカメラ。テーマソング『新世界(SHINSEKAI)』を踊る亮賀くんの姿が楽しめます。<br>
+          <div class="movie-desc" data-i18n-html="movie.featuredDesc">亮賀くんの記念すべき初の推しカメラ。テーマソング『新世界(SHINSEKAI)』を踊る亮賀くんの姿が楽しめます。<br>
             より多くの亮賀くんに「はじめまして」の方に届けるため、りょがサポの皆さまで日々再生を頑張りましょう！</div>
         </div>
       </a>
@@ -953,7 +979,7 @@
           <div class="movie-title">新世界 (SHINSEKAI) PRACTICE VIDEO｜PRODUCE 101 JAPAN 新世界
 </div>
           <div class="movie-date">2026.03.25</div>
-          <div class="movie-desc">Fクラスのセンターで踊る亮賀くんの姿が楽しめます！</div>
+          <div class="movie-desc" data-i18n="movie.card1Desc">Fクラスのセンターで踊る亮賀くんの姿が楽しめます！</div>
         </div>
       </a>
       
@@ -967,7 +993,7 @@
     <div class="section-head reveal">
       <div class="section-num">04 — SNS CONTENTS</div>
       <div class="section-title" data-text="CONTENTS">CONTENTS</div>
-      <div class="section-title-jp">公式SNS・投稿まとめ</div>
+      <div class="section-title-jp" data-i18n="contents.sub">公式SNS・投稿まとめ</div>
     </div>
     <div class="contents-grid">
 
@@ -1002,7 +1028,7 @@
           <div class="contents-platform instagram">INSTAGRAM</div>
         </div>
         <div class="contents-info">
-          <div class="contents-title">RYOGAのビジュアル良すぎ注意報✨️</div>
+          <div class="contents-title" data-i18n="contents.visualAlert">RYOGAのビジュアル良すぎ注意報✨️</div>
           <div class="contents-arrow">投稿を見る</div>
         </div>
       </a>
@@ -1014,7 +1040,7 @@
           <div class="contents-platform youtube">YouTube</div>
         </div>
         <div class="contents-info">
-          <div class="contents-title">101DAY LIVE STREAMING<br>
+          <div class="contents-title" data-i18n-html="contents.liveStream">101DAY LIVE STREAMING<br>
           亮賀くんの出番は28:00〜頃から。<br>
           3ポーズを披露しますと言って、4ポーズも披露してくれるサービス精神旺盛な亮賀くんの姿が楽しめます。</div>
           <div class="contents-arrow">投稿を見る</div>
@@ -1132,7 +1158,7 @@
     <div class="section-head reveal">
       <div class="section-num">05 — FAN PROJECTS</div>
       <div class="section-title" data-text="PROJECTS">PROJECTS</div>
-      <div class="section-title-jp">ファンダム企画まとめ</div>
+      <div class="section-title-jp" data-i18n="projects.sub">ファンダム企画まとめ</div>
     </div>
 
     <!-- ══════════════════════════════════════
@@ -1143,7 +1169,7 @@
         <div class="proj-block-icon">🤝</div>
         <div>
           <div class="proj-block-title">COLLABORATION</div>
-          <div class="proj-block-title-jp">コラボ企画</div>
+          <div class="proj-block-title-jp" data-i18n="proj.collab">コラボ企画</div>
         </div>
       </div>
 
@@ -1160,12 +1186,12 @@
             </div>
           </div>
           <div class="collab-body">
-            <div class="collab-period">📅 期間：第1回投票終了まで</div>
-            <div class="collab-title">加藤大樹くんコラボ投票企画</div>
+            <div class="collab-period" data-i18n="collab1.period">📅 期間：第1回投票終了まで</div>
+            <div class="collab-title" data-i18n="collab1.title">加藤大樹くんコラボ投票企画</div>
             <ol class="collab-steps">
-              <li class="collab-step"><span class="collab-step-num">1️⃣</span><span>飯塚亮賀くんと加藤大樹くんの2名に投票🗳️</span></li>
-              <li class="collab-step"><span class="collab-step-num">2️⃣</span><span>投票したことがわかるスクリーンショットを撮影📱</span></li>
-              <li class="collab-step"><span class="collab-step-num">3️⃣</span><span>FDのXから毎日投稿される【コラボ投票提出ポスト】に、ハッシュタグ「#みどりょがコラボ投票」をつけて投票認証画像を投稿⚽️☘️</span></li>
+              <li class="collab-step"><span class="collab-step-num">1️⃣</span><span data-i18n="collab1.step1">飯塚亮賀くんと加藤大樹くんの2名に投票🗳️</span></li>
+              <li class="collab-step"><span class="collab-step-num">2️⃣</span><span data-i18n="collab1.step2">投票したことがわかるスクリーンショットを撮影📱</span></li>
+              <li class="collab-step"><span class="collab-step-num">3️⃣</span><span data-i18n="collab1.step3">FDのXから毎日投稿される【コラボ投票提出ポスト】に、ハッシュタグ「#みどりょがコラボ投票」をつけて投票認証画像を投稿⚽️☘️</span></li>
             </ol>
           </div>
         </div>
@@ -1179,10 +1205,10 @@
             </div>
           </div>
           <div class="collab-body">
-            <div class="collab-period">📅 期間：第1回投票終了まで</div>
-            <div class="collab-title">岡田侑磨くんコラボ投票企画</div>
+            <div class="collab-period" data-i18n="collab2.period">📅 期間：第1回投票終了まで</div>
+            <div class="collab-title" data-i18n="collab2.title">岡田侑磨くんコラボ投票企画</div>
             <ol class="collab-steps">
-              <li class="collab-step"><span class="collab-step-num">💡</span><span>OC内で随時ご参加者様を募集中！</span></li>
+              <li class="collab-step"><span class="collab-step-num">💡</span><span data-i18n="collab2.step1">OC内で随時ご参加者様を募集中！</span></li>
             </ol>
           </div>
         </div>
@@ -1206,7 +1232,7 @@
         <div class="proj-block-icon">📣</div>
         <div>
           <div class="proj-block-title">SUPPORT AD</div>
-          <div class="proj-block-title-jp">応援広告</div>
+          <div class="proj-block-title-jp" data-i18n="proj.ad">応援広告</div>
         </div>
       </div>
 
@@ -1216,8 +1242,8 @@
         <!-- 左：サポート募金募集 -->
         <div class="ouen-panel">
           <div class="ouen-panel-tag">STEP 01 — FUNDRAISING</div>
-          <div class="ouen-panel-title">応援広告サポート募金 募集中</div>
-          <div class="ouen-period">📅 募集期間：2026年4月3日（金）まで</div>
+          <div class="ouen-panel-title" data-i18n="ad.fundTitle">応援広告サポート募金 募集中</div>
+          <div class="ouen-period" data-i18n="ad.fundPeriod">📅 募集期間：2026年4月3日（金）まで</div>
           <!-- 3枚横並び（タップで拡大） -->
           <div class="ouen-imgs-3">
             <div class="ouen-img-wrap zoomable">
@@ -1233,10 +1259,10 @@
               <div class="ouen-img-placeholder">IMAGE 3</div>
             </div>
           </div>
-          <a href="https://forms.gle/bVcAv4GN3puDoXzP7" target="_blank" rel="noopener noreferrer" class="ouen-form-btn">
+          <a href="https://forms.gle/bVcAv4GN3puDoXzP7" target="_blank" rel="noopener noreferrer" class="ouen-form-btn" data-i18n="ad.formBtn">
             📋 詳細はフォームをチェック！
           </a>
-          <div class="ouen-note">Googleフォームにて詳細・振込先等をご確認ください。</div>
+          <div class="ouen-note" data-i18n="ad.formNote">Googleフォームにて詳細・振込先等をご確認ください。</div>
         </div>
 
       </div>
@@ -1256,38 +1282,24 @@
         <div class="proj-block-icon">♬</div>
         <div>
           <div class="proj-block-title">STREAMING PARTY</div>
-          <div class="proj-block-title-jp">スミンパーティー</div>
+          <div class="proj-block-title-jp" data-i18n="proj.sumin">スミンパーティー</div>
         </div>
       </div>
-
-      <!-- 企画あり時: 手順画像2枚 -->
-      <!--
-      <div class="sumin-imgs">
-        <div class="sumin-img-wrap zoomable">
-          <img src="images/sumin1.jpg" alt="スミンパーティー手順1">
-        </div>
-        <div class="sumin-img-wrap zoomable">
-          <img src="images/sumin2.jpg" alt="スミンパーティー手順2">
-        </div>
-      </div>
-      -->
 
       <!-- COMING SOON時の表示 -->
       <div class="sumin-coming">
         <div class="proj-coming-label" style="margin-bottom:16px;">COMING SOON...</div>
-        <div class="sumin-coming-msg">
+        <div class="sumin-coming-msg" data-i18n-html="sumin.msg">
           スミンパーティーは今後も実施予定！<br>
           お仕事や学校の合間、通勤通学の際に推しカメラの再生をお願いします⚽️
         </div>
-        <!-- 動画リンク付きサムネイル -->
         <a href="https://www.youtube.com/watch?v=f7DrhGXmwVc" target="_blank" rel="noopener noreferrer" class="sumin-video">
           <div class="sumin-video-thumb">
             <img src="images/movies/shinsekai.jpg" alt="推しカメラ">
-            <div class="sumin-video-thumb-placeholder">▶ VIDEO</div>
           </div>
           <div class="sumin-video-info">
-            <div class="sumin-video-label">OSHI CAMERA</div>
-            <div class="sumin-video-title">推しカメラ｜RYOGA ( 飯塚 亮賀 )｜新世界 (SHINSEKAI)</div>
+            <div class="sumin-video-label" data-i18n="sumin.label">OSHI CAMERA</div>
+            <div class="sumin-video-title" data-i18n="sumin.videoTitle">推しカメラ｜RYOGA ( 飯塚 亮賀 )｜新世界 (SHINSEKAI)</div>
           </div>
         </a>
       </div>
@@ -1307,74 +1319,117 @@
   <div class="section-inner vote-content reveal">
     <div class="vote-tag">NATIONAL PRODUCER</div>
     <div class="vote-title">VOTE FOR RYOGA</div>
-    <p class="vote-sub">
+    <p class="vote-sub" data-i18n-html="vote.sub">
       飯塚亮賀くんを、あなたの1票でデビューへ。<br>
       投票方法をしっかり確認して、毎日欠かさず投票しよう！
     </p>
 
-    <!-- HOW TO VOTE -->
-    <div class="vote-howto">
-      <div class="howto-title">HOW TO VOTE — 投票方法</div>
+    <!-- HOW TO VOTE — JA版 -->
+    <div class="vote-howto" id="howtoJa">
+      <div class="howto-title" data-i18n="howto.title">HOW TO VOTE — 投票方法</div>
       <ol class="howto-steps">
         <li class="howto-step">
           <div class="step-num">1</div>
           <div class="step-body">
-            <div class="step-action"><span class="highlight">dアカウント</span>でログイン</div>
-            <div class="step-desc">PRODUCE 101 JAPAN 新世界の投票ページにアクセスし、dアカウントでログインしてください。<br>
-              アカウントをお持ちでない方は無料で登録できます。</div>
+            <div class="step-action" data-i18n-html="jaS1a"><span class="highlight">dアカウント</span>でログイン</div>
+            <div class="step-desc" data-i18n-html="jaS1d">PRODUCE 101 JAPAN 新世界の投票ページにアクセスし、dアカウントでログインしてください。<br>アカウントをお持ちでない方は無料で登録できます。</div>
           </div>
         </li>
         <li class="howto-step">
           <div class="step-num">2</div>
           <div class="step-body">
-            <div class="step-action">毎日 <span class="highlight">0:00 以降</span>に「<span class="highlight">投票ボックス追加</span>」ボタンをタップ</div>
-            <div class="step-desc">投票ページで <span class="accent">飯塚亮賀</span> くんのページを開き「投票ボックス追加」ボタンをタップ。<br>
-              投票は毎日0:00にリセット！日付が変わったらすぐ投票がおすすめです。</div>
+            <div class="step-action" data-i18n-html="jaS2a">毎日 <span class="highlight">0:00 以降</span>に「<span class="highlight">投票ボックス追加</span>」ボタンをタップ</div>
+            <div class="step-desc" data-i18n-html="jaS2d">投票ページで <span class="accent">飯塚亮賀</span> くんのページを開き「投票ボックス追加」ボタンをタップ。<br>投票は毎日0:00にリセット！日付が変わったらすぐ投票がおすすめです。</div>
           </div>
         </li>
         <li class="howto-step">
           <div class="step-num">3</div>
           <div class="step-body">
-            <div class="step-action">指定の人数を選んだら、<span class="highlight">ページ右下のアイコン</span><img src="images/votingbox.png" alt="投票アイコン" style="height:1.2em; vertical-align:middle; margin-left:4px;"> をタップ</div>
-            <div class="step-desc">指定された人数分の練習生を選び終えたら、ページ右下に表示されているアイコンをタップして確認画面へ進んでください。</div>
+            <div class="step-action" data-i18n-html="jaS3a">指定の人数を選んだら、<span class="highlight">ページ右下のアイコン</span><img src="images/votingbox.png" alt="投票アイコン" style="height:1.2em; vertical-align:middle; margin-left:4px;"> をタップ</div>
+            <div class="step-desc" data-i18n="jaS3d">指定された人数分の練習生を選び終えたら、ページ右下に表示されているアイコンをタップして確認画面へ進んでください。</div>
           </div>
         </li>
         <li class="howto-step">
           <div class="step-num">4</div>
           <div class="step-body">
-            <div class="step-action">「<span class="highlight">投票する</span>」ボタンをタップで投票完了！🎉</div>
-            <div class="step-desc">確認画面で選んだ練習生を確認し、「投票する」ボタンをタップすれば完了です。<br>
-              <span class="accent">亮賀くんへの投票をお忘れなく！</span></div>
+            <div class="step-action" data-i18n-html="jaS4a">「<span class="highlight">投票する</span>」ボタンをタップで投票完了！🎉</div>
+            <div class="step-desc" data-i18n-html="jaS4d">確認画面で選んだ練習生を確認し、「投票する」ボタンをタップすれば完了です。<br><span class="accent">亮賀くんへの投票をお忘れなく！</span></div>
           </div>
         </li>
       </ol>
-      <div class="vote-note">
+      <div class="vote-note" data-i18n-html="ja.voteNote">
         ⏰ <strong>投票は毎日0:00にリセット＆1日2回投票可能！</strong><br>
         1日でも多く投票することが亮賀くんの順位アップに直結します。<br>
         毎日忘れず亮賀くんに2票を届けましょう！
       </div>
     </div>
 
-    <div class="vote-links">
+    <!-- HOW TO VOTE — 海外版 -->
+    <div class="vote-howto" id="howtoIntl" style="display:none;">
+      <div class="howto-title" data-i18n="intl.howtoTitle">HOW TO VOTE</div>
+      <ol class="howto-steps">
+        <li class="howto-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-action" data-i18n-html="intlS1a">Download the <span class="highlight">Mnet Plus</span> app</div>
+            <div class="step-desc" data-i18n="intlS1d">Download the Mnet Plus app and create or log in to your account.</div>
+          </div>
+        </li>
+        <li class="howto-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-action" data-i18n-html="intlS2a">Go to <span class="highlight">PRODUCE 101 JAPAN SHINSEKAI</span> page → tap "<span class="highlight">Voting Menu</span>"</div>
+            <div class="step-desc" data-i18n-html="intlS2d">In the app, find the PRODUCE 101 JAPAN SHINSEKAI page and tap the voting menu. Select <span class="accent">Ryoga Iizuka</span> and the required number of trainees.</div>
+          </div>
+        </li>
+        <li class="howto-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-action" data-i18n-html="intlS3a">Tap "<span class="highlight">Submit Vote</span>" at the bottom to complete！🎉</div>
+            <div class="step-desc" data-i18n-html="intlS3d">Once selections are made, tap "Submit Vote" at the bottom. <span class="accent">Don't forget to include Ryoga！</span></div>
+          </div>
+        </li>
+      </ol>
+      <div class="vote-note" data-i18n-html="intl.voteNote">
+        ⏰ <strong>Votes reset every day！</strong><br>
+        Every vote directly helps Ryoga's ranking. Vote every day！
+      </div>
+    </div>
+
+    <!-- リンク JA版 -->
+    <div class="vote-links" id="voteLinksJa">
       <a href="https://vote.produce101.jp/" target="_blank" class="vote-link-card">
         <div class="vote-link-icon">🗳️</div>
         <div class="vote-link-name">OFFICIAL VOTE</div>
-        <div class="vote-link-desc">公式投票ページへ</div>
+        <div class="vote-link-desc" data-i18n="ja.officialDesc">公式投票ページへ</div>
       </a>
       <a href="http://vote.produce101.jp/lemino?utm_sou" target="_blank" class="vote-link-card">
         <div class="vote-link-icon">📱</div>
         <div class="vote-link-name">APP VOTE</div>
-        <div class="vote-link-desc">Leminoから投票</div>
+        <div class="vote-link-desc" data-i18n="ja.appDesc">Leminoから投票</div>
       </a>
       <a href="https://x.gd/qcSj3w" target="_blank" class="vote-link-card">
         <div class="vote-link-icon">🐦</div>
         <div class="vote-link-name">SHARE & CHEER</div>
-        <div class="vote-link-desc">ハッシュタグで応援<br>
-        [応援タグ]<strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong><br>
-        [布教タグ]<strong style="color:#1d9bf0;">#亮賀への愛がたいりょうが</strong></div>
+        <div class="vote-link-desc" data-i18n-html="ja.shareDesc">ハッシュタグで応援<br>[応援タグ]<strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong><br>[布教タグ]<strong style="color:#1d9bf0;">#亮賀への愛がたいりょうが</strong></div>
       </a>
     </div>
-    <p style="margin-top:20px;font-size:0.72rem;color:var(--gray);">
+
+    <!-- リンク 海外版 -->
+    <div class="vote-links" id="voteLinksIntl" style="display:none;">
+      <a href="https://share.mnetplus.world/download?hl=en" target="_blank" class="vote-link-card">
+        <div class="vote-link-icon">📱</div>
+        <div class="vote-link-name" data-i18n="intl.appName">MNET PLUS</div>
+        <div class="vote-link-desc" data-i18n="intl.appDesc">Vote via Mnet Plus app</div>
+      </a>
+      <a href="https://x.gd/qcSj3w" target="_blank" class="vote-link-card">
+        <div class="vote-link-icon">🐦</div>
+        <div class="vote-link-name">SHARE & CHEER</div>
+        <div class="vote-link-desc" data-i18n-html="intl.shareDesc">Cheer with hashtags<br><strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong><br><strong style="color:#1d9bf0;">#亮賀への愛がたいりょうが</strong></div>
+      </a>
+    </div>
+
+    <p style="margin-top:20px;font-size:0.72rem;color:var(--gray);" data-i18n="vote.hashtags">
       ＃飯塚亮賀 ＃PRODUCE101JAPAN新世界 ＃iizukaryoga
     </p>
   </div>
@@ -1386,7 +1441,7 @@
     <div class="section-head reveal">
       <div class="section-num">05 — FAN COMMUNITY</div>
       <div class="section-title" data-text="COMMUNITY">COMMUNITY</div>
-      <div class="section-title-jp">ファンダムのSNS・コミュニティ</div>
+      <div class="section-title-jp" data-i18n="community.sub">ファンダムのSNS・コミュニティ</div>
     </div>
     <div class="sns-grid">
 
@@ -1395,9 +1450,9 @@
           <div class="sns-icon">𝕏</div>
           <div class="sns-platform">X</div>
         </div>
-        <div class="sns-name">飯塚亮賀FD【りょがサポ】X</div>
-        <div class="sns-desc">亮賀くんの最新情報や企画など様々な情報を日々発信中！リポストでの拡散が亮賀くんの応援に繋がります。ハッシュタグ <strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong> で亮賀くんを応援しましょう！</div>
-        <div class="sns-action">フォローする</div>
+        <div class="sns-name" data-i18n="sns.xName">飯塚亮賀FD【りょがサポ】X</div>
+        <div class="sns-desc" data-i18n-html="sns.xDesc">亮賀くんの最新情報や企画など様々な情報を日々発信中！リポストでの拡散が亮賀くんの応援に繋がります。ハッシュタグ <strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong> で亮賀くんを応援しましょう！</div>
+        <div class="sns-action" data-i18n="sns.follow">フォローする</div>
       </a>
 
       <a href="https://t.co/jeJEXktMCO" target="_blank" class="sns-card line reveal">
@@ -1405,9 +1460,9 @@
           <div class="sns-icon">💬</div>
           <div class="sns-platform">LINE OPENCHAT</div>
         </div>
-        <div class="sns-name">飯塚亮賀くん応援オープンチャット</div>
-        <div class="sns-desc">最新情報をお届けするほか、情報共有・感想などりょがサポの皆さまでお話できる雑談ルームもあります。亮賀くんを応援する方大歓迎です！</div>
-        <div class="sns-action">参加する</div>
+        <div class="sns-name" data-i18n="sns.lineName">飯塚亮賀くん応援オープンチャット</div>
+        <div class="sns-desc" data-i18n="sns.lineDesc">最新情報をお届けするほか、情報共有・感想などりょがサポの皆さまでお話できる雑談ルームもあります。亮賀くんを応援する方大歓迎です！</div>
+        <div class="sns-action" data-i18n="sns.join">参加する</div>
       </a>
 
       <a href="https://www.youtube.com/channel/UCvAWn5sZN8DhCYIjNSUT-6g?sub_confirmation=1" target="_blank" class="sns-card instagram reveal">
@@ -1415,9 +1470,9 @@
           <div class="sns-icon">📺️</div>
           <div class="sns-platform">YouTube</div>
         </div>
-        <div class="sns-name">飯塚亮賀FDチャンネル</div>
-        <div class="sns-desc">亮賀くんの関連動画やプレイリストをご紹介！</div>
-        <div class="sns-action">登録する</div>
+        <div class="sns-name" data-i18n="sns.ytName">飯塚亮賀FDチャンネル</div>
+        <div class="sns-desc" data-i18n="sns.ytDesc">亮賀くんの関連動画やプレイリストをご紹介！</div>
+        <div class="sns-action" data-i18n="sns.subscribe">登録する</div>
       </a>
       
       <a href="https://www.instagram.com/ryogasapo/" target="_blank" class="sns-card tiktok reveal">
@@ -1426,7 +1481,7 @@
           <div class="sns-platform">Instagram</div>
         </div>
         <div class="sns-name">@ryogasapo</div>
-        <div class="sns-action">フォローする</div>
+        <div class="sns-action" data-i18n="sns.follow">フォローする</div>
       </a>
       
       <a href="https://www.tiktok.com/@iizukaryogafb" target="_blank" class="sns-card tiktok reveal">
@@ -1435,7 +1490,7 @@
           <div class="sns-platform">TIKTOK</div>
         </div>
         <div class="sns-name">@iizukaryogafb</div>
-        <div class="sns-action">フォローする</div>
+        <div class="sns-action" data-i18n="sns.follow">フォローする</div>
       </a>
 
     </div>
@@ -1445,7 +1500,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">IIZUKA <span>RYOGA</span> FAN SITE</div>
-  <p class="footer-note">
+  <p class="footer-note" data-i18n-html="footer.note">
     このサイトは有志ファンが運営する非公式ファンサイトです。<br>
     PRODUCE 101 JAPAN 新世界 および 飯塚亮賀くんの公式サイトではありません。<br>
     掲載内容に関するお問い合わせは <a href="#">こちら</a>
@@ -1652,6 +1707,341 @@ lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
   
   const banner = document.getElementById('vote-period-banner');
+
+  // ===== i18n =====
+  const i18n = {
+    ja: {
+      'nav.voteBtn': '★ VOTE NOW',
+      'vpb.heading': '第1回投票 開催中！🗳️',
+      'vpb.detail':  '<strong>投票期間：〜 4月17日 (金) 4:00 まで</strong><br>毎日 0:00 以降に飯塚亮賀くんへの投票が可能！<span class="highlight">1日2票</span>、毎日欠かさず投票しよう！',
+      'vpb.btn':     '★ VOTE NOW →',
+      'hero.tag':    '飯塚亮賀FD【りょがサポ】有志FANSITE',
+      'hero.nameJp': '飯塚 亮賀',
+      'hero.desc':   'PRODUCE 101 JAPAN 新世界に挑戦中の練習生<br>抜群のビジュアルで放送開始前から話題に！<br>まっさら未経験の飯塚亮賀の伸びしろは無限大！！',
+      'hero.btnVote':  '★ 投票する',
+      'hero.btnStory': '▶ STORYを見る',
+      'nextep.date':  '4月2日（木） 21:00〜',
+      'nextep.title': '次回予告：クラス再編成',
+      'nextep.desc':  '初めてのレベル分けをCクラスで終えた亮賀。<br>しかし、立ち止まっている暇はない。息つく間もなく、運命の「クラス再編成」が幕を開ける！<br>立ちはだかる壁を前に、彼はいったいどうなるのか？ 果たして再評価の行方は……！？<br>走り出したばかりの亮賀から、来週も目が離せない！',
+      'story.sub':  '番組での軌跡',
+      'story.note': '※ エピソードは随時追加・更新されます',
+      'ep01.title': '第1話：何者でもない僕',
+      'ep01.desc':  'ずっとサッカーばかりしてきた少年が、ある日突然アイドルを目指したら？<br>「新世界」で目覚めた飯塚亮賀は、右も左もわからないまま『FRESH-MEN』として最初のレベル分けステージに立つ。<br>目の前に広がる景色に目を輝かせながら彼が届けたのは、朝の光のように真っ直ぐで爽やかな歌声だった。<br>披露した『はじめまして』への評価は、Cクラス。まだまだ未完成。だからこそ目が離せない。<br>これは、一人の少年がアイドルとして世界へ羽ばたくまでの、記念すべき最初の1ページ。',
+      'ep01.result': '★ 初回レベル分けチーム『FRESH-MEN』（飯塚亮賀、照井康祐、山下柊、増田倫希、岡田侑磨、小林蓮翔）<br>★ 初回レベル分け評価：Cクラス',
+      'char.sub':    '飯塚亮賀くんプロフィール紹介',
+      'prof.dob':    '生年月日', 'prof.origin': '出身地', 'prof.originVal': '群馬県',
+      'prof.height': '身長', 'prof.hobby': '趣味', 'prof.hobbyVal': 'アニメ鑑賞、サッカー、ゲーム',
+      'prof.skill':  '特技', 'prof.skillVal': 'サッカーボールを頭の上に乗せて歩くこと',
+      'prof.mbti':   'INTP（論理学者）', 'prof.fanEval': '※ファンによる独自評価',
+      'tag.soccer':  '⚽ サッカー好き', 'tag.otaku': '🤓 ヲタク',
+      'movie.sub':          '動画アーカイブ',
+      'movie.featuredLabel':'目指せ20万回再生！',
+      'movie.featuredDesc': '亮賀くんの記念すべき初の推しカメラ。テーマソング『新世界(SHINSEKAI)』を踊る亮賀くんの姿が楽しめます。<br>より多くの亮賀くんに「はじめまして」の方に届けるため、りょがサポの皆さまで日々再生を頑張りましょう！',
+      'movie.card1Desc': 'Fクラスのセンターで踊る亮賀くんの姿が楽しめます！',
+      'contents.sub':       '公式SNS・投稿まとめ',
+      'contents.visualAlert': 'RYOGAのビジュアル良すぎ注意報✨️',
+      'contents.liveStream':  '101DAY LIVE STREAMING<br>亮賀くんの出番は28:00〜頃から。<br>3ポーズを披露しますと言って、4ポーズも披露してくれるサービス精神旺盛な亮賀くんの姿が楽しめます。',
+      'contents.arrow': '投稿を見る',
+      'projects.sub': 'ファンダム企画まとめ',
+      'proj.collab': 'コラボ企画', 'proj.ad': '応援広告', 'proj.sumin': 'スミンパーティー',
+      'collab1.period': '📅 期間：第1回投票終了まで',
+      'collab1.title':  '加藤大樹くんコラボ投票企画',
+      'collab1.step1':  '飯塚亮賀くんと加藤大樹くんの2名に投票🗳️',
+      'collab1.step2':  '投票したことがわかるスクリーンショットを撮影📱',
+      'collab1.step3':  'FDのXから毎日投稿される【コラボ投票提出ポスト】に、ハッシュタグ「#みどりょがコラボ投票」をつけて投票認証画像を投稿⚽️☘️',
+      'collab2.period': '📅 期間：第1回投票終了まで',
+      'collab2.title':  '岡田侑磨くんコラボ投票企画',
+      'collab2.step1':  'OC内で随時ご参加者様を募集中！',
+      'ad.fundTitle':   '応援広告サポート募金 募集中',
+      'ad.fundPeriod':  '📅 募集期間：2026年4月3日（金）まで',
+      'ad.formBtn':     '📋 詳細はフォームをチェック！',
+      'ad.formNote':    'Googleフォームにて詳細・振込先等をご確認ください。',
+      'sumin.msg':       'スミンパーティーは今後も実施予定！<br>お仕事や学校の合間、通勤通学の際に推しカメラの再生をお願いします⚽️',
+      'sumin.label':     'OSHI CAMERA',
+      'sumin.videoTitle':'推しカメラ｜RYOGA ( 飯塚 亮賀 )｜新世界 (SHINSEKAI)',
+      'vote.sub':        '飯塚亮賀くんを、あなたの1票でデビューへ。<br>投票方法をしっかり確認して、毎日欠かさず投票しよう！',
+      'howto.title': 'HOW TO VOTE — 投票方法',
+      'jaS1a': '<span class="highlight">dアカウント</span>でログイン',
+      'jaS1d': 'PRODUCE 101 JAPAN 新世界の投票ページにアクセスし、dアカウントでログインしてください。<br>アカウントをお持ちでない方は無料で登録できます。',
+      'jaS2a': '毎日 <span class="highlight">0:00 以降</span>に「<span class="highlight">投票ボックス追加</span>」ボタンをタップ',
+      'jaS2d': '投票ページで <span class="accent">飯塚亮賀</span> くんのページを開き「投票ボックス追加」ボタンをタップ。<br>投票は毎日0:00にリセット！日付が変わったらすぐ投票がおすすめです。',
+      'jaS3a': '指定の人数を選んだら、<span class="highlight">ページ右下のアイコン</span><img src="images/votingbox.png" alt="投票アイコン" style="height:1.2em;vertical-align:middle;margin-left:4px;"> をタップ',
+      'jaS3d': '指定された人数分の練習生を選び終えたら、ページ右下に表示されているアイコンをタップして確認画面へ進んでください。',
+      'jaS4a': '「<span class="highlight">投票する</span>」ボタンをタップで投票完了！🎉',
+      'jaS4d': '確認画面で選んだ練習生を確認し、「投票する」ボタンをタップすれば完了です。<br><span class="accent">亮賀くんへの投票をお忘れなく！</span>',
+      'ja.voteNote': '⏰ <strong>投票は毎日0:00にリセット＆1日2回投票可能！</strong><br>1日でも多く投票することが亮賀くんの順位アップに直結します。<br>毎日忘れず亮賀くんに2票を届けましょう！',
+      'ja.officialDesc': '公式投票ページへ',
+      'ja.appDesc':      'Leminoから投票',
+      'ja.shareDesc':    'ハッシュタグで応援<br>[応援タグ]<strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong><br>[布教タグ]<strong style="color:#1d9bf0;">#亮賀への愛がたいりょうが</strong>',
+      'vote.hashtags': '＃飯塚亮賀 ＃PRODUCE101JAPAN新世界 ＃iizukaryoga',
+      'community.sub':  'ファンダムのSNS・コミュニティ',
+      'sns.xName':      '飯塚亮賀FD【りょがサポ】X',
+      'sns.xDesc':      '亮賀くんの最新情報や企画など様々な情報を日々発信中！リポストでの拡散が亮賀くんの応援に繋がります。ハッシュタグ <strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong> で亮賀くんを応援しましょう！',
+      'sns.lineName':   '飯塚亮賀くん応援オープンチャット',
+      'sns.lineDesc':   '最新情報をお届けするほか、情報共有・感想などりょがサポの皆さまでお話できる雑談ルームもあります。亮賀くんを応援する方大歓迎です！',
+      'sns.ytName':     '飯塚亮賀FDチャンネル',
+      'sns.ytDesc':     '亮賀くんの関連動画やプレイリストをご紹介！',
+      'sns.follow':     'フォローする', 'sns.join': '参加する', 'sns.subscribe': '登録する',
+      'footer.note':    'このサイトは有志ファンが運営する非公式ファンサイトです。<br>PRODUCE 101 JAPAN 新世界 および 飯塚亮賀くんの公式サイトではありません。<br>掲載内容に関するお問い合わせは <a href="#">こちら</a>',
+    },
+
+    ko: {
+      'nav.voteBtn': '★ 투표하기',
+      'vpb.heading': '제1회 투표 진행 중！🗳️',
+      'vpb.detail':  '<strong>투표 기간：～ 4월 17일 (금) 4:00 까지</strong><br>매일 0:00 이후 이이즈카 료가에게 투표 가능！하루 2표, 매일 잊지 말고 투표하세요！',
+      'vpb.btn':     '★ 투표하기 →',
+      'hero.tag':    '이이즈카 료가 FD 팬사이트',
+      'hero.nameJp': '이이즈카 료가',
+      'hero.desc':   'PRODUCE 101 JAPAN 신세계에 도전 중인 연습생<br>방송 전부터 화제가 된 압도적인 비주얼！<br>무한한 가능성의 이이즈카 료가에게 주목！',
+      'hero.btnVote':  '★ 투표하기',
+      'hero.btnStory': '▶ STORY 보기',
+      'nextep.date':  '4월 2일 (목) 21:00〜',
+      'nextep.title': '다음 예고：클래스 재편성',
+      'nextep.desc':  '처음 레벨 테스트에서 C클래스를 받은 료가.<br>하지만 멈출 시간은 없다. 숨 돌릴 새도 없이 운명의 「클래스 재편성」이 시작된다！<br>눈앞의 벽 앞에서 그는 어떻게 될까？ 재평가의 결과는……！？<br>이제 막 달리기 시작한 료가에게 다음 주도 눈을 뗄 수 없다！',
+      'story.sub':  '방송 속 발자취',
+      'story.note': '※ 에피소드는 순차적으로 추가·업데이트됩니다',
+      'ep01.title': '제1화：아무것도 아닌 나',
+      'ep01.desc':  '축구만 해온 소년이 어느 날 갑자기 아이돌을 꿈꾼다면？<br>「신세계」에서 눈을 뜬 이이즈카 료가는 아무것도 모른 채 『FRESH-MEN』으로서 첫 레벨 테스트 무대에 선다.<br>눈앞에 펼쳐진 세계에 눈을 빛내며 전한 것은, 아침 햇살처럼 맑고 곧은 목소리였다.<br>『はじめまして』의 평가는 C클래스. 아직 미완성. 그래서 눈을 뗄 수 없다.<br>한 소년이 아이돌로 세계에 날아오를 때까지의, 기념할 첫 번째 페이지.',
+      'ep01.result': '★ 첫 레벨 테스트 팀 『FRESH-MEN』（이이즈카 료가, 테루이 코스케, 야마시타 슈, 마스다 토모키, 오카다 유마, 코바야시 렌쇼）<br>★ 첫 레벨 테스트 평가：C클래스',
+      'char.sub':    '이이즈카 료가 프로필',
+      'prof.dob': '생년월일', 'prof.origin': '출신지', 'prof.originVal': '군마현',
+      'prof.height': '키', 'prof.hobby': '취미', 'prof.hobbyVal': '애니 감상, 축구, 게임',
+      'prof.skill': '특기', 'prof.skillVal': '축구공을 머리 위에 올려놓고 걷기',
+      'prof.mbti': 'INTP（논리학자）', 'prof.fanEval': '※팬의 자체 평가',
+      'tag.soccer': '⚽ 축구 좋아', 'tag.otaku': '🤓 오타쿠',
+      'movie.sub': '영상 아카이브',
+      'movie.featuredLabel': '목표 20만 재생！',
+      'movie.featuredDesc':  '료가의 기념할 첫 오시카메라. 테마송 『신세계(SHINSEKAI)』를 추는 료가를 즐겨보세요.<br>더 많은 분들에게 료가를 알리기 위해 팬 여러분 함께 매일 재생을 부탁드려요！',
+      'movie.card1Desc': 'F클래스 센터로 춤추는 료가의 모습을 즐겨보세요！',
+      'contents.sub': '공식 SNS·게시물 모음',
+      'contents.visualAlert': 'RYOGA 비주얼 주의보✨️',
+      'contents.liveStream':  '101DAY LIVE STREAMING<br>료가의 등장은 28:00~ 부근부터.<br>3포즈를 선보이겠다고 했는데 4포즈나 선보여준 서비스 정신 넘치는 료가의 모습을 즐겨보세요.',
+      'contents.arrow': '게시물 보기',
+      'projects.sub': '팬덤 기획 모음',
+      'proj.collab': '콜라보 기획', 'proj.ad': '응원 광고', 'proj.sumin': '스트리밍 파티',
+      'collab1.period': '📅 기간：제1회 투표 종료까지',
+      'collab1.title':  '카토 다이키 콜라보 투표 기획',
+      'collab1.step1':  '이이즈카 료가와 카토 다이키 2명에게 투표🗳️',
+      'collab1.step2':  '투표한 것을 알 수 있는 스크린샷 촬영📱',
+      'collab1.step3':  'FD X에서 매일 게시되는 【콜라보 투표 제출 포스트】에 해시태그 「#みどりょがコラボ投票」를 붙여 투표 인증 이미지 게시⚽️☘️',
+      'collab2.period': '📅 기간：제1회 투표 종료까지',
+      'collab2.title':  '오카다 유마 콜라보 투표 기획',
+      'collab2.step1':  'OC에서 수시로 참가자 모집 중！',
+      'ad.fundTitle':   '응원 광고 서포트 모금 모집 중',
+      'ad.fundPeriod':  '📅 모집 기간：2026년 4월 3일（금）까지',
+      'ad.formBtn':     '📋 자세한 내용은 폼을 확인！',
+      'ad.formNote':    'Google 폼에서 자세한 내용·송금처 등을 확인해주세요.',
+      'sumin.msg':       '스트리밍 파티는 앞으로도 계속 진행 예정！<br>일하는 중, 학교 가는 중, 출퇴근길에 오시카메라 재생을 부탁드려요⚽️',
+      'sumin.label':     'OSHI CAMERA',
+      'sumin.videoTitle':'오시카메라｜RYOGA ( 이이즈카 료가 )｜신세계 (SHINSEKAI)',
+      'vote.sub':        '이이즈카 료가를 당신의 한 표로 데뷔시키자.<br>투표 방법을 확인하고 매일 빠짐없이 투표해요！',
+      'intl.howtoTitle': 'HOW TO VOTE — 투표 방법',
+      'intlS1a': '<span class="highlight">Mnet Plus</span> 앱 다운로드',
+      'intlS1d': 'Mnet Plus 앱을 다운로드하고 계정을 만들거나 로그인하세요.',
+      'intlS2a': '앱 내 <span class="highlight">PRODUCE 101 JAPAN SHINSEKAI</span> 페이지에서 "<span class="highlight">투표 메뉴</span>" 탭',
+      'intlS2d': '<span class="accent">이이즈카 료가</span>를 포함하여 지정 인원수의 연습생을 선택하세요.',
+      'intlS3a': '페이지 하단의 "<span class="highlight">투표 제출</span>" 버튼을 탭해서 완료！🎉',
+      'intlS3d': '"投票提出" 버튼을 탭하면 완료입니다. <span class="accent">료가에게 투표하는 것 잊지 마세요！</span>',
+      'intl.voteNote': '⏰ <strong>투표는 매일 리셋！</strong><br>한 표라도 더 투표하는 것이 료가의 순위 상승에 직결됩니다.',
+      'intl.appName': 'MNET PLUS', 'intl.appDesc': 'Mnet Plus 앱으로 투표',
+      'intl.shareDesc': '해시태그로 응원<br><strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong><br><strong style="color:#1d9bf0;">#亮賀への愛がたいりょうが</strong>',
+      'vote.hashtags': '＃이이즈카료가 ＃PRODUCE101JAPAN신세계 ＃iizukaryoga',
+      'community.sub': '팬덤 SNS·커뮤니티',
+      'sns.xName':     '이이즈카 료가 FD X',
+      'sns.xDesc':     '료가의 최신 정보와 기획 등 다양한 정보를 매일 발신 중！리포스트 확산이 료가 응원으로 이어집니다. 해시태그 <strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong>로 함께 응원해요！',
+      'sns.lineName':  '이이즈카 료가 응원 오픈채팅',
+      'sns.lineDesc':  '최신 정보 공유와 감상 등 팬들끼리 이야기할 수 있는 채팅방입니다. 료가를 응원하는 분 누구나 환영！',
+      'sns.ytName':    '이이즈카 료가 FD 채널',
+      'sns.ytDesc':    '료가 관련 영상과 플레이리스트를 소개！',
+      'sns.follow': '팔로우하기', 'sns.join': '참가하기', 'sns.subscribe': '구독하기',
+      'footer.note': '이 사이트는 유지 팬이 운영하는 비공식 팬사이트입니다.<br>PRODUCE 101 JAPAN 신세계 및 이이즈카 료가의 공식 사이트가 아닙니다.<br>문의는 <a href="#">여기</a>',
+    },
+
+    en: {
+      'nav.voteBtn': '★ VOTE NOW',
+      'vpb.heading': 'Round 1 Voting Now Open！🗳️',
+      'vpb.detail':  '<strong>Voting Period: Until April 17 (Fri) 4:00</strong><br>Vote for Ryoga Iizuka every day from 0:00！2 votes per day — don\'t miss it！',
+      'vpb.btn':     '★ VOTE NOW →',
+      'hero.tag':    'IIZUKA RYOGA FD — FAN SITE',
+      'hero.nameJp': 'Iizuka Ryoga',
+      'hero.desc':   'Trainee competing on PRODUCE 101 JAPAN SHINSEKAI<br>Already making waves before the show even began！<br>Limitless potential — Ryoga is just getting started！',
+      'hero.btnVote':  '★ Vote Now',
+      'hero.btnStory': '▶ View Story',
+      'nextep.date':  'April 2 (Thu) 21:00〜',
+      'nextep.title': 'Next Preview: Class Reshuffling',
+      'nextep.desc':  'Ryoga finished his first level test in Class C.<br>But there\'s no time to stop — the fateful "Class Reshuffling" begins immediately！<br>Faced with new challenges, what will become of him？ Where will the re-evaluation lead……！？<br>Ryoga has only just started running — next week promises to be unmissable！',
+      'story.sub':  'His journey on the show',
+      'story.note': '※ Episodes will be added and updated regularly',
+      'ep01.title': 'EP.01: Nobody Yet',
+      'ep01.desc':  'What if a boy who only ever played soccer suddenly decided to become an idol？<br>Ryoga Iizuka, awakened in the "New World," steps onto the first level-test stage as part of "FRESH-MEN" without knowing left from right.<br>Eyes shining at the view before him, he delivered a voice as straight and fresh as morning light.<br>His performance of "はじめまして" earned him Class C. Still unfinished. That\'s exactly why you can\'t look away.<br>This is the first commemorable page of one boy\'s journey to spread his wings as an idol.',
+      'ep01.result': '★ First Level Test Team "FRESH-MEN" (Ryoga Iizuka, Kosuke Terui, Shu Yamashita, Tomoki Masuda, Yuma Okada, Rensho Kobayashi)<br>★ First Level Test Result: Class C',
+      'char.sub':    'Profile of Iizuka Ryoga',
+      'prof.dob': 'Birthday', 'prof.origin': 'Hometown', 'prof.originVal': 'Gunma Prefecture',
+      'prof.height': 'Height', 'prof.hobby': 'Hobbies', 'prof.hobbyVal': 'Anime, Soccer, Gaming',
+      'prof.skill': 'Special Skill', 'prof.skillVal': 'Balancing a soccer ball on his head while walking',
+      'prof.mbti': 'INTP (Logician)', 'prof.fanEval': '※ Fan-made evaluation',
+      'tag.soccer': '⚽ Soccer Lover', 'tag.otaku': '🤓 Anime Otaku',
+      'movie.sub': 'Video Archive',
+      'movie.featuredLabel': 'Goal: 200K Views！',
+      'movie.featuredDesc':  'Ryoga\'s first-ever Oshi Camera. Watch him dance to the theme song "SHINSEKAI".<br>Help spread Ryoga to new fans — let\'s keep playing it every day！',
+      'movie.card1Desc': 'Watch Ryoga dance as center of Class F！',
+      'contents.sub': 'Official SNS Posts',
+      'contents.visualAlert': 'RYOGA Visual Alert⚠️✨️',
+      'contents.liveStream':  '101DAY LIVE STREAMING<br>Ryoga appears from around 28:00.<br>He said he\'d show 3 poses — then showed 4. Catch Ryoga\'s overflowing fan-service spirit！',
+      'contents.arrow': 'View post',
+      'projects.sub': 'Fandom Projects',
+      'proj.collab': 'Collab Project', 'proj.ad': 'Support Ad', 'proj.sumin': 'Streaming Party',
+      'collab1.period': '📅 Period: Until Round 1 voting ends',
+      'collab1.title':  'Daiki Kato Collab Vote Project',
+      'collab1.step1':  'Vote for both Ryoga Iizuka AND Daiki Kato🗳️',
+      'collab1.step2':  'Take a screenshot showing you voted📱',
+      'collab1.step3':  'Post your vote screenshot on the daily collab post from the FD X account with hashtag「#みどりょがコラボ投票」⚽️☘️',
+      'collab2.period': '📅 Period: Until Round 1 voting ends',
+      'collab2.title':  'Yuma Okada Collab Vote Project',
+      'collab2.step1':  'Recruiting participants in the OC at any time！',
+      'ad.fundTitle':   'Support Ad Fundraising Open',
+      'ad.fundPeriod':  '📅 Period: Until April 3, 2026 (Fri)',
+      'ad.formBtn':     '📋 Check the form for details！',
+      'ad.formNote':    'Please check the Google Form for details and payment info.',
+      'sumin.msg':       'Streaming parties will continue！<br>Please play the Oshi Camera during your commute, school breaks, or work breaks⚽️',
+      'sumin.label':     'OSHI CAMERA',
+      'sumin.videoTitle':'Oshi Camera｜RYOGA ( Iizuka Ryoga )｜SHINSEKAI',
+      'vote.sub':        'Help Ryoga Iizuka debut with your vote.<br>Check the guide below and vote every single day！',
+      'intl.howtoTitle': 'HOW TO VOTE',
+      'intlS1a': 'Download the <span class="highlight">Mnet Plus</span> app',
+      'intlS1d': 'Download the Mnet Plus app and create or log in to your account.',
+      'intlS2a': 'Go to <span class="highlight">PRODUCE 101 JAPAN SHINSEKAI</span> → tap "<span class="highlight">Voting Menu</span>"',
+      'intlS2d': 'Find <span class="accent">Ryoga Iizuka</span> and select the required number of trainees.',
+      'intlS3a': 'Tap "<span class="highlight">Submit Vote</span>" at the bottom to complete！🎉',
+      'intlS3d': 'Tap the Submit Vote button at the bottom. <span class="accent">Don\'t forget to include Ryoga！</span>',
+      'intl.voteNote': '⏰ <strong>Votes reset every day！</strong><br>Every vote directly helps Ryoga\'s ranking. Keep voting！',
+      'intl.appName': 'MNET PLUS', 'intl.appDesc': 'Vote via Mnet Plus app',
+      'intl.shareDesc': 'Cheer with hashtags<br><strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong><br><strong style="color:#1d9bf0;">#亮賀への愛がたいりょうが</strong>',
+      'vote.hashtags': '#iizukaryoga #PRODUCE101JAPAN #飯塚亮賀',
+      'community.sub': 'Fandom SNS & Community',
+      'sns.xName':     'Iizuka Ryoga FD X',
+      'sns.xDesc':     'Daily updates on Ryoga\'s news and fan projects！Reposts help spread the word. Use hashtag <strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong> to cheer together！',
+      'sns.lineName':  'Ryoga Fan OpenChat',
+      'sns.lineDesc':  'Share the latest info and chat with fellow fans. Everyone who supports Ryoga is welcome！',
+      'sns.ytName':    'Iizuka Ryoga FD Channel',
+      'sns.ytDesc':    'Featuring Ryoga-related videos and playlists！',
+      'sns.follow': 'Follow', 'sns.join': 'Join', 'sns.subscribe': 'Subscribe',
+      'footer.note': 'This is an unofficial fan site run by volunteer fans.<br>This is not the official site of PRODUCE 101 JAPAN SHINSEKAI or Ryoga Iizuka.<br>Contact: <a href="#">here</a>',
+    },
+
+    zh: {
+      'nav.voteBtn': '★ 立即投票',
+      'vpb.heading': '第1次投票进行中！🗳️',
+      'vpb.detail':  '<strong>投票期间：至4月17日（周五）4:00</strong><br>每天0:00后可为饭冢亮贺投票！每天2票，每天坚持投票！',
+      'vpb.btn':     '★ 立即投票 →',
+      'hero.tag':    '饭冢亮贺FD 粉丝应援站',
+      'hero.nameJp': '饭冢 亮贺',
+      'hero.desc':   '正在挑战PRODUCE 101 JAPAN 新世界的练习生<br>播出前就凭出众外貌引发热议！<br>毫无经验的饭冢亮贺，潜力无限！！',
+      'hero.btnVote':  '★ 立即投票',
+      'hero.btnStory': '▶ 查看故事',
+      'nextep.date':  '4月2日（周四）21:00〜',
+      'nextep.title': '下期预告：班级重组',
+      'nextep.desc':  '第一次等级测试以C班结束的亮贺。<br>但没有停下来的时间。命运的「班级重组」立刻拉开序幕！<br>面对眼前的高墙，他究竟会怎样？再评价的结果将是……！？<br>刚刚开始起跑的亮贺，下周也不容错过！',
+      'story.sub':  '节目中的成长轨迹',
+      'story.note': '※ 将持续添加·更新剧集内容',
+      'ep01.title': '第1话：什么都不是的我',
+      'ep01.desc':  '一个只踢过足球的少年某天突然立志成为偶像？<br>在「新世界」中觉醒的饭冢亮贺，在一无所知的情况下以『FRESH-MEN』身份站上第一次等级测试的舞台。<br>眼睛因眼前的景色而闪闪发光，他送出的是如晨光般清澈直接的歌声。<br>所演唱的『はじめまして』的评价是C班。还不完整。正因如此才令人难以移目。<br>这是一个少年以偶像身份翱翔于世界的值得纪念的第一页。',
+      'ep01.result': '★ 首次等级测试队伍『FRESH-MEN』（饭冢亮贺、照井康祐、山下柊、增田伦希、冈田侑磨、小林蓮翔）<br>★ 首次等级测试评价：C班',
+      'char.sub':    '饭冢亮贺个人资料',
+      'prof.dob': '生日', 'prof.origin': '出身地', 'prof.originVal': '群马县',
+      'prof.height': '身高', 'prof.hobby': '爱好', 'prof.hobbyVal': '看动漫、踢足球、打游戏',
+      'prof.skill': '特长', 'prof.skillVal': '把足球放在头上行走',
+      'prof.mbti': 'INTP（逻辑学家）', 'prof.fanEval': '※粉丝自制评价',
+      'tag.soccer': '⚽ 足球爱好者', 'tag.otaku': '🤓 动漫宅',
+      'movie.sub': '视频合集',
+      'movie.featuredLabel': '目标20万播放！',
+      'movie.featuredDesc':  '亮贺值得纪念的第一个推镜头。欣赏他随主题曲「新世界(SHINSEKAI)」起舞的姿态。<br>为了让更多人认识亮贺，请粉丝们每天坚持播放！',
+      'movie.card1Desc': '欣赏在F班担任中心起舞的亮贺！',
+      'contents.sub': '官方SNS·帖子汇总',
+      'contents.visualAlert': 'RYOGA颜值警报✨️',
+      'contents.liveStream':  '101DAY LIVE STREAMING<br>亮贺的出场约从28:00开始。<br>明明说了展示3个造型，却展示了4个的服务精神满满的亮贺令人爱不释手。',
+      'contents.arrow': '查看帖子',
+      'projects.sub': '粉丝团企划汇总',
+      'proj.collab': '联动企划', 'proj.ad': '应援广告', 'proj.sumin': '流媒体派对',
+      'collab1.period': '📅 期间：第1次投票结束前',
+      'collab1.title':  '加藤大树联动投票企划',
+      'collab1.step1':  '同时为饭冢亮贺和加藤大树2人投票🗳️',
+      'collab1.step2':  '拍摄显示已投票的截图📱',
+      'collab1.step3':  '在FD X每日发布的【联动投票提交帖子】上，附上话题标签「#みどりょがコラボ投票」发布投票认证图⚽️☘️',
+      'collab2.period': '📅 期间：第1次投票结束前',
+      'collab2.title':  '冈田侑磨联动投票企划',
+      'collab2.step1':  '在OC内随时招募参与者！',
+      'ad.fundTitle':   '应援广告支持募款招募中',
+      'ad.fundPeriod':  '📅 招募期间：2026年4月3日（周五）前',
+      'ad.formBtn':     '📋 详情请查看表单！',
+      'ad.formNote':    '请在Google表单中确认详情及汇款方式。',
+      'sumin.msg':       '流媒体派对今后也会继续举办！<br>请在上班、上学途中，以及通勤途中播放推镜头⚽️',
+      'sumin.label':     'OSHI CAMERA',
+      'sumin.videoTitle':'推镜头｜RYOGA ( 饭冢 亮贺 )｜新世界 (SHINSEKAI)',
+      'vote.sub':        '用你的一票让饭冢亮贺出道。<br>确认投票方式，每天坚持投票！',
+      'intl.howtoTitle': 'HOW TO VOTE — 投票方法',
+      'intlS1a': '下载 <span class="highlight">Mnet Plus</span> 应用',
+      'intlS1d': '下载Mnet Plus应用并创建账号或登录。',
+      'intlS2a': '在应用内进入 <span class="highlight">PRODUCE 101 JAPAN SHINSEKAI</span> 页面，点击「<span class="highlight">投票菜单</span>」',
+      'intlS2d': '找到 <span class="accent">饭冢亮贺</span> 并选择指定数量的练习生。',
+      'intlS3a': '点击页面下方"<span class="highlight">提交投票</span>"按钮完成投票！🎉',
+      'intlS3d': '点击"提交投票"按钮即可完成。<span class="accent">别忘了为亮贺投票！</span>',
+      'intl.voteNote': '⏰ <strong>投票每天重置！</strong><br>多投一票就能直接帮助亮贺的排名上升，每天坚持！',
+      'intl.appName': 'MNET PLUS', 'intl.appDesc': '通过Mnet Plus应用投票',
+      'intl.shareDesc': '用话题标签应援<br><strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong><br><strong style="color:#1d9bf0;">#亮賀への愛がたいりょうが</strong>',
+      'vote.hashtags': '＃饭冢亮贺 ＃PRODUCE101JAPAN新世界 ＃iizukaryoga',
+      'community.sub': '粉丝团SNS·社区',
+      'sns.xName':     '饭冢亮贺FD X',
+      'sns.xDesc':     '每日发送亮贺的最新资讯和企划信息！转发扩散就是对亮贺的应援。用话题标签 <strong style="color:#1d9bf0;">#りょがサポで亮賀にアシストを</strong> 一起应援！',
+      'sns.lineName':  '饭冢亮贺应援开放聊天',
+      'sns.lineDesc':  '提供最新信息外，也是粉丝们可以分享感想、闲聊的空间。欢迎所有支持亮贺的朋友！',
+      'sns.ytName':    '饭冢亮贺FD频道',
+      'sns.ytDesc':    '介绍亮贺相关视频和播放列表！',
+      'sns.follow': '关注', 'sns.join': '加入', 'sns.subscribe': '订阅',
+      'footer.note': '本站为粉丝自发运营的非官方粉丝网站。<br>非PRODUCE 101 JAPAN新世界及饭冢亮贺的官方网站。<br>联系：<a href="#">这里</a>',
+    }
+  };
+
+  function applyLang(lang) {
+    const t = i18n[lang];
+    if (!t) return;
+    const isJa = lang === 'ja';
+
+    // data-i18n（textContent）
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (t[k] !== undefined) el.textContent = t[k];
+    });
+    // data-i18n-html（innerHTML）
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.dataset.i18nHtml;
+      if (t[k] !== undefined) el.innerHTML = t[k];
+    });
+
+    // JA / 海外 投票セクション切り替え
+    const howtoJa   = document.getElementById('howtoJa');
+    const howtoIntl = document.getElementById('howtoIntl');
+    const linksJa   = document.getElementById('voteLinksJa');
+    const linksIntl = document.getElementById('voteLinksIntl');
+    if (howtoJa)   howtoJa.style.display   = isJa ? '' : 'none';
+    if (howtoIntl) howtoIntl.style.display = isJa ? 'none' : '';
+    if (linksJa)   linksJa.style.display   = isJa ? '' : 'none';
+    if (linksIntl) linksIntl.style.display = isJa ? 'none' : '';
+
+    // lang属性 & ボタンのアクティブ状態
+    document.documentElement.lang = { ja:'ja', ko:'ko', en:'en', zh:'zh-CN' }[lang] || 'ja';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    localStorage.setItem('ryoga_lang', lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  applyLang(localStorage.getItem('ryoga_lang') || 'ja');
   const heroSection = document.getElementById('top');
   function adjustHeroOffset() {
     const bannerH = (banner && banner.style.display !== 'none') ? banner.offsetHeight : 0;
