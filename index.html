@@ -430,6 +430,103 @@
   .contents-arrow::after { content: '→'; transition: transform 0.2s; }
   .contents-card:hover .contents-arrow { color: var(--blue); }
   .contents-card:hover .contents-arrow::after { transform: translateX(4px); }
+
+  /* ===== PROJECTS ===== */
+#projects { background: var(--bg); }
+#projects::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+
+/* サブセクション共通 */
+.proj-block { margin-bottom: 64px; }
+.proj-block:last-child { margin-bottom: 0; }
+.proj-block-head {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.proj-block-icon { font-size: 1.6rem; flex-shrink: 0; }
+.proj-block-title { font-family: var(--font-en); font-size: 1.6rem; letter-spacing: 4px; color: var(--white); }
+.proj-block-title-jp { font-family: var(--font-jp); font-size: 0.75rem; color: var(--gray); letter-spacing: 2px; margin-top: 2px; }
+
+/* COMING SOON */
+.proj-coming {
+  background: var(--panel); border: 1px solid var(--border);
+  padding: 40px; text-align: center;
+}
+.proj-coming-label { font-family: var(--font-en); font-size: 1.4rem; letter-spacing: 6px; color: var(--gray); margin-bottom: 12px; }
+.proj-coming-sub { font-size: 0.82rem; color: var(--gray); line-height: 1.9; }
+
+/* ─── コラボ企画 ─── */
+.collab-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.collab-card { background: var(--panel); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s; }
+.collab-card:hover { border-color: rgba(0,180,255,0.5); }
+.collab-img { position: relative; aspect-ratio: 16/9; background: #0a1525; overflow: hidden; cursor: zoom-in; }
+.collab-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.collab-img:hover img { transform: scale(1.04); }
+.collab-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; font-family: var(--font-en); color: var(--blue-dark); font-size: 0.7rem; letter-spacing: 3px; }
+.collab-body { padding: 20px 22px; }
+.collab-period { font-family: var(--font-sub); font-size: 0.68rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 6px; }
+.collab-title { font-family: var(--font-jp); font-size: 0.95rem; font-weight: 900; color: var(--white); margin-bottom: 14px; line-height: 1.5; }
+.collab-steps { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.collab-step { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; line-height: 1.7; color: var(--gray); }
+.collab-step:last-child { border-bottom: none; }
+.collab-step-num { flex-shrink: 0; font-family: var(--font-en); font-size: 0.85rem; color: var(--blue); font-weight: 700; min-width: 20px; }
+
+/* ─── 応援広告 ─── */
+.ouen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.ouen-panel { background: var(--panel); border: 1px solid var(--border); padding: 28px; }
+.ouen-panel-tag { font-family: var(--font-sub); font-size: 0.68rem; letter-spacing: 3px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
+.ouen-panel-title { font-family: var(--font-jp); font-size: 0.95rem; font-weight: 900; color: var(--white); margin-bottom: 16px; }
+.ouen-period { font-size: 0.78rem; color: var(--gold); margin-bottom: 16px; }
+/* 3枚横並び画像 */
+.ouen-imgs-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 16px; }
+.ouen-imgs-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 16px; }
+.ouen-img-wrap { position: relative; aspect-ratio: 4/5; background: #0a1525; overflow: hidden; cursor: zoom-in; border: 1px solid var(--border); }
+.ouen-img-wrap.landscape { aspect-ratio: 16/9; }
+.ouen-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+.ouen-img-wrap:hover img { transform: scale(1.05); }
+.ouen-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); color: var(--blue-dark); font-size: 0.6rem; letter-spacing: 2px; }
+.ouen-form-btn {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  font-family: var(--font-sub); font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
+  color: var(--bg); background: var(--blue); text-decoration: none;
+  padding: 10px 24px; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: all 0.2s;
+}
+.ouen-form-btn:hover { background: var(--blue-glow); box-shadow: var(--glow); }
+.ouen-note { font-size: 0.75rem; color: var(--gray); margin-top: 10px; line-height: 1.7; }
+
+/* ─── スミンパーティー ─── */
+.sumin-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+.sumin-img-wrap { position: relative; aspect-ratio: 9/16; background: #0a1525; overflow: hidden; cursor: zoom-in; border: 1px solid var(--border); }
+.sumin-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+.sumin-img-wrap:hover img { transform: scale(1.04); }
+.sumin-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; font-family: var(--font-en); color: var(--blue-dark); font-size: 0.65rem; letter-spacing: 2px; }
+.sumin-coming { background: var(--panel); border: 1px solid var(--border); padding: 28px; }
+.sumin-coming-msg { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.9; margin-bottom: 20px; border-left: 2px solid var(--blue-dark); padding-left: 14px; }
+/* video thumb link */
+.sumin-video { display: flex; align-items: center; gap: 14px; text-decoration: none; background: rgba(0,180,255,0.06); border: 1px solid var(--border); padding: 14px 16px; transition: all 0.2s; }
+.sumin-video:hover { border-color: rgba(0,180,255,0.5); background: rgba(0,180,255,0.12); }
+.sumin-video-thumb { flex-shrink: 0; width: 100px; aspect-ratio: 16/9; background: #0a1525; overflow: hidden; position: relative; }
+.sumin-video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sumin-video-thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); color: var(--blue-dark); font-size: 0.55rem; letter-spacing: 2px; }
+.sumin-video-info {}
+.sumin-video-label { font-family: var(--font-sub); font-size: 0.65rem; letter-spacing: 3px; color: var(--blue); margin-bottom: 4px; }
+.sumin-video-title { font-size: 0.82rem; font-weight: 700; color: var(--white); line-height: 1.5; }
+
+/* ─── Lightbox ─── */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; cursor: zoom-out; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; box-shadow: 0 0 60px rgba(0,180,255,0.2); }
+.lightbox-close { position: absolute; top: 20px; right: 24px; font-family: var(--font-en); font-size: 2rem; color: var(--gray); cursor: pointer; line-height: 1; background: none; border: none; transition: color 0.2s; }
+.lightbox-close:hover { color: var(--white); }
+
+@media (max-width: 900px) {
+  .collab-grid { grid-template-columns: 1fr; }
+  .ouen-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .sumin-imgs { grid-template-columns: 1fr 1fr; }
+  .ouen-imgs-3 { grid-template-columns: repeat(3, 1fr); }
+}
   
   /* ===== VOTE ===== */
   #vote { background: var(--bg); padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
@@ -549,6 +646,7 @@
     <a href="#character">CHARACTER</a>
     <a href="#movie">MOVIE</a>
     <a href="#contents">CONTENTS</a>
+    <a href="#projects">PROJECTS</a>
     <a href="#vote">VOTE</a>
     <a href="#community">COMMUNITY</a>
   </nav>
@@ -567,6 +665,7 @@
   <a href="#character" onclick="closeMobileMenu()">CHARACTER</a>
   <a href="#movie" onclick="closeMobileMenu()">MOVIE</a>
   <a href="#contents" onclick="closeMobileMenu()">CONTENTS</a>
+  <a href="#projects" onclick="closeMobileMenu()">PROJECTS</a>
   <a href="#vote" onclick="closeMobileMenu()">VOTE</a>
   <a href="#community" onclick="closeMobileMenu()">COMMUNITY</a>
 </nav>
@@ -1026,6 +1125,182 @@
     </div>
   </div>
 </section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-num">05 — FAN PROJECTS</div>
+      <div class="section-title" data-text="PROJECTS">PROJECTS</div>
+      <div class="section-title-jp">ファンダム企画まとめ</div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         コラボ企画
+    ═══════════════════════════════════════ -->
+    <div class="proj-block reveal">
+      <div class="proj-block-head">
+        <div class="proj-block-icon">🤝</div>
+        <div>
+          <div class="proj-block-title">COLLABORATION</div>
+          <div class="proj-block-title-jp">コラボ企画</div>
+        </div>
+      </div>
+
+      <!-- 企画あり時: 以下のカードを複数並べる -->
+      <div class="collab-grid">
+
+        <!-- COLLAB CARD 1 -->
+        <div class="collab-card">
+          <div class="collab-img zoomable">
+            <!-- <img src="images/projects/katodaiki_collabo.png" alt="コラボ企画画像"> -->
+            <div class="collab-img-placeholder">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+              COLLAB IMAGE
+            </div>
+          </div>
+          <div class="collab-body">
+            <div class="collab-period">📅 期間：第1回投票終了まで</div>
+            <div class="collab-title">加藤大樹くんコラボ投票企画</div>
+            <ol class="collab-steps">
+              <li class="collab-step"><span class="collab-step-num">1️⃣</span><span>飯塚亮賀くんと加藤大樹くんの2名に投票🗳️</span></li>
+              <li class="collab-step"><span class="collab-step-num">2️⃣</span><span>投票したことがわかるスクリーンショットを撮影📱</span></li>
+              <li class="collab-step"><span class="collab-step-num">3️⃣</span><span>FDのXから毎日投稿される【コラボ投票提出ポスト】に、ハッシュタグ「#みどりょがコラボ投票」をつけて投票認証画像を投稿⚽️☘️</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="collab-card">
+          <div class="collab-img zoomable">
+            <!-- <img src="images/projects/okadayuma_collabo.png" alt="コラボ企画画像"> -->
+            <div class="collab-img-placeholder">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+              COLLAB IMAGE
+            </div>
+          </div>
+          <div class="collab-body">
+            <div class="collab-period">📅 期間：第1回投票終了まで</div>
+            <div class="collab-title">岡田侑磨くんコラボ投票企画</div>
+            <ol class="collab-steps">
+              <li class="collab-step"><span class="collab-step-num">💡</span><span>OC内で随時ご参加者様を募集中！</span></li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- COLLAB CARD 2（企画が増えたらここにコピー） -->
+
+      </div>
+      <!-- 企画がまったくない時は↓を代わりに表示（上のcollab-gridをコメントアウト）
+      <div class="proj-coming">
+        <div class="proj-coming-label">COMING SOON...</div>
+        <div class="proj-coming-sub">コラボ企画を準備中です。お楽しみに！</div>
+      </div>
+      -->
+    </div>
+
+    <!-- ══════════════════════════════════════
+         応援広告
+    ═══════════════════════════════════════ -->
+    <div class="proj-block reveal">
+      <div class="proj-block-head">
+        <div class="proj-block-icon">📣</div>
+        <div>
+          <div class="proj-block-title">SUPPORT AD</div>
+          <div class="proj-block-title-jp">応援広告</div>
+        </div>
+      </div>
+
+      <!-- 企画あり時 -->
+      <div class="ouen-grid">
+
+        <!-- 左：サポート募金募集 -->
+        <div class="ouen-panel">
+          <div class="ouen-panel-tag">STEP 01 — FUNDRAISING</div>
+          <div class="ouen-panel-title">応援広告サポート募金 募集中</div>
+          <div class="ouen-period">📅 募集期間：2026年4月3日（金）まで</div>
+          <!-- 3枚横並び（タップで拡大） -->
+          <div class="ouen-imgs-3">
+            <div class="ouen-img-wrap zoomable">
+              <!-- <img src="images/projects/応援広告説明.png" alt="応援広告"> -->
+              <div class="ouen-img-placeholder">IMAGE 1</div>
+            </div>
+            <div class="ouen-img-wrap zoomable">
+              <!-- <img src="images/projects/目標金額.png" alt="応援広告"> -->
+              <div class="ouen-img-placeholder">IMAGE 2</div>
+            </div>
+            <div class="ouen-img-wrap zoomable">
+              <!-- <img src="images/projects/PayPay送金.png" alt="応援広告"> -->
+              <div class="ouen-img-placeholder">IMAGE 3</div>
+            </div>
+          </div>
+          <a href="https://forms.gle/bVcAv4GN3puDoXzP7" target="_blank" rel="noopener noreferrer" class="ouen-form-btn">
+            📋 詳細はフォームをチェック！
+          </a>
+          <div class="ouen-note">Googleフォームにて詳細・振込先等をご確認ください。</div>
+        </div>
+
+      </div>
+      <!-- 企画がない時はouen-gridをコメントアウトして↓を表示
+      <div class="proj-coming">
+        <div class="proj-coming-label">COMING SOON...</div>
+        <div class="proj-coming-sub">応援広告企画を準備中です。お楽しみに！</div>
+      </div>
+      -->
+    </div>
+
+    <!-- ══════════════════════════════════════
+         スミンパーティー
+    ═══════════════════════════════════════ -->
+    <div class="proj-block reveal">
+      <div class="proj-block-head">
+        <div class="proj-block-icon">♬</div>
+        <div>
+          <div class="proj-block-title">STREAMING PARTY</div>
+          <div class="proj-block-title-jp">スミンパーティー</div>
+        </div>
+      </div>
+
+      <!-- 企画あり時: 手順画像2枚 -->
+      <!--
+      <div class="sumin-imgs">
+        <div class="sumin-img-wrap zoomable">
+          <img src="images/sumin1.jpg" alt="スミンパーティー手順1">
+        </div>
+        <div class="sumin-img-wrap zoomable">
+          <img src="images/sumin2.jpg" alt="スミンパーティー手順2">
+        </div>
+      </div>
+      -->
+
+      <!-- COMING SOON時の表示 -->
+      <div class="sumin-coming">
+        <div class="proj-coming-label" style="margin-bottom:16px;">COMING SOON...</div>
+        <div class="sumin-coming-msg">
+          スミンパーティーは今後も実施予定！<br>
+          お仕事や学校の合間、通勤通学の際に推しカメラの再生をお願いします⚽️
+        </div>
+        <!-- 動画リンク付きサムネイル -->
+        <a href="https://www.youtube.com/watch?v=f7DrhGXmwVc" target="_blank" rel="noopener noreferrer" class="sumin-video">
+          <div class="sumin-video-thumb">
+            <!-- <img src="images/movies/shinsekai.jpg" alt="推しカメラ"> -->
+            <div class="sumin-video-thumb-placeholder">▶ VIDEO</div>
+          </div>
+          <div class="sumin-video-info">
+            <div class="sumin-video-label">OSHI CAMERA</div>
+            <div class="sumin-video-title">推しカメラ｜RYOGA ( 飯塚 亮賀 )｜新世界 (SHINSEKAI)</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
   
 <!-- VOTE -->
 <section id="vote">
