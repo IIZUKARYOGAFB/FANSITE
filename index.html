@@ -409,6 +409,7 @@
   .contents-platform.instagram { background: linear-gradient(135deg, rgba(245,133,41,0.85), rgba(221,42,123,0.85)); color: #fff; }
   .contents-platform.tiktok { background: rgba(1,1,1,0.8); color: #69c9d0; border: 1px solid rgba(105,201,208,0.4); }
   .contents-platform.x { background: rgba(29,155,240,0.85); color: #fff; }
+  .contents-platform.youtube { background: rgba(255,0,0,0.85); color: #fff; }
   .contents-info { padding: 14px 16px; }
   .contents-title { font-size: 0.85rem; font-weight: 700; color: var(--white); line-height: 1.5; }
   .contents-arrow { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-family: var(--font-sub); font-size: 0.7rem; letter-spacing: 2px; font-weight: 700; color: var(--gray); transition: color 0.2s; }
@@ -622,9 +623,7 @@
 
     <!-- ↓ サムネイル画像。画像を入れる場合は img の src に URL を、alt にテキストを記入。
          画像を使わない場合は <div class="next-ep-thumb no-img"> にして非表示にできます -->
-    <div class="next-ep-thumb">
-      <!-- 画像を入れる場合: src に画像URLを記入 -->
-      <img src="images/chapter1/8.JPG" alt="次回予告サムネイル">
+    <div class="next-ep-thumb no-img">
       <div class="next-ep-thumb-placeholder">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
         THUMBNAIL
@@ -636,7 +635,7 @@
       <div class="next-ep-date">4月2日（木） 21:00〜</div>
       <div class="next-ep-title">次回予告：クラス再編成</div>
       <div class="next-ep-desc">
-        初めてのクラス分けをCクラスで終えた亮賀。<br>
+        初めてのレベル分けをCクラスで終えた亮賀。<br>
         しかし、立ち止まっている暇はない。息つく間もなく、運命の「クラス再編成」が幕を開ける！<br>
         立ちはだかる壁を前に、彼はいったいどうなるのか？ 果たして再評価の行方は……！？<br>
         走り出したばかりの亮賀から、来週も目が離せない！
@@ -655,56 +654,16 @@
     </div>
     <div class="story-grid">
 
-  <!-- EP.01 ===== 写真の追加: .ep-carousel-slide をコピーして増やす ===== -->
-  <div class="story-ep reveal">
-    <div class="ep-carousel" data-autoplay="4000">
-      <div class="ep-carousel-track">
-         <div class="ep-carousel-slide">
-           <img src="images/chapter1/1.WEBP" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/2.WEBP" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/3.WEBP" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/4.WEBP" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/5.WEBP" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/6.WEBP" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/7.WEBP" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/8.JPG" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/9.JPG" alt="EP01">
-         </div>
-        <div class="ep-carousel-slide">
-           <img src="images/chapter1/10.JPG" alt="EP01">
-         </div>
-      </div>
-      <button class="ep-carousel-btn ep-prev" aria-label="前へ"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="ep-carousel-btn ep-next" aria-label="次へ"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
-      <div class="ep-carousel-counter"><span class="ep-cur">1</span> / <span class="ep-total">2</span></div>
-      <div class="ep-carousel-progress"></div>
-    </div>
     <div class="story-ep-body">
       <div class="ep-tag">EP.01</div>
       <div class="ep-title">第1話：何者でもない僕</div>
       <p class="ep-desc">ずっとサッカーばかりしてきた少年が、ある日突然アイドルを目指したら？<br>
-        「新世界」で目覚めた飯塚亮賀は、右も左もわからないまま『FRESH-MEN』として最初のクラス分けステージに立つ。<br>
+        「新世界」で目覚めた飯塚亮賀は、右も左もわからないまま『FRESH-MEN』として最初のレベル分けステージに立つ。<br>
         目の前に広がる景色に目を輝かせながら彼が届けたのは、朝の光のように真っ直ぐで爽やかな歌声だった。<br>
         披露した『はじめまして』への評価は、Cクラス。まだまだ未完成。だからこそ目が離せない。<br>
         これは、一人の少年がアイドルとして世界へ羽ばたくまでの、記念すべき最初の1ページ。</p>
-      <div class="ep-result good">★ 初回クラス分けチーム『FRESH-MEN』（飯塚亮賀、照井康祐、山下柊、増田倫希、岡田侑磨、小林蓮翔）<br>
-      ★ 初回クラス分け評価：Cクラス</div>
+      <div class="ep-result good">★ 初回レベル分けチーム『FRESH-MEN』（飯塚亮賀、照井康祐、山下柊、増田倫希、岡田侑磨、小林蓮翔）<br>
+      ★ 初回レベル分け評価：Cクラス</div>
       <div class="ep-num">01</div>
     </div>
   </div>
@@ -784,20 +743,10 @@
 
             <!-- SLIDE 6 -->
             <div class="carousel-slide">
-              <img src="images/conceptphoto_1.jpeg" alt="飯塚亮賀">
-              <div class="slide-placeholder">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-                PHOTO 6
-              </div>
-              <div class="slide-label">番組放送前の𝗖𝗢𝗡𝗖𝗘𝗣𝗧 𝗣𝗢𝗦𝗧𝗘𝗥</div>
-            </div>
-
-            <!-- SLIDE 7 -->
-            <div class="carousel-slide">
               <img src="images/conceptphoto_2.jpeg" alt="飯塚亮賀">
               <div class="slide-placeholder">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-                PHOTO 7
+                PHOTO 6
               </div>
               <div class="slide-label">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗖𝗢𝗡𝗖𝗘𝗣𝗧 𝗣𝗛𝗢𝗧𝗢</div>
             </div>
@@ -865,7 +814,7 @@
       <!-- FEATURED -->
       <a href="https://www.youtube.com/watch?v=f7DrhGXmwVc" target="_blank" class="movie-featured reveal">
         <div class="movie-thumb">
-          <!-- <img src="images/movies/shinsekai.jpg" alt="最新動画"> -->
+          <img src="images/movies/shinsekai.jpg" alt="最新動画">
           <div class="movie-thumb-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>LATEST VIDEO</div>
           <div class="play-icon"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="25" r="23" stroke-width="2"/><polygon points="20,15 38,25 20,35" fill="white" stroke="none"/></svg></div>
         </div>
@@ -874,7 +823,23 @@
           <div class="movie-tag">PRODUCE 101 JAPAN 新世界</div>
           <div class="movie-title">推しカメラ｜RYOGA ( 飯塚 亮賀 )｜新世界 (SHINSEKAI)</div>
           <div class="movie-date">2026.02.22</div>
-          <div class="movie-desc">亮賀くんの記念すべき初の推しカメラ。テーマソング『新世界(SHINSEKAI)』を踊る亮賀くんの姿が楽しめます。より多くの亮賀くんに「はじめまして」の方に届けるため、りょがサポで日々再生を頑張りましょう！</div>
+          <div class="movie-desc">亮賀くんの記念すべき初の推しカメラ。テーマソング『新世界(SHINSEKAI)』を踊る亮賀くんの姿が楽しめます。<br>
+            より多くの亮賀くんに「はじめまして」の方に届けるため、りょがサポの皆さまで日々再生を頑張りましょう！</div>
+        </div>
+      </a>
+
+      <!-- VIDEO 1 -->
+      <a href="https://youtu.be/7PdRrGQEUpc?si=6_1OLHcAnbAwvik1" target="_blank" class="movie-card reveal">
+        <div class="movie-thumb">
+          <div class="movie-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg></div>
+          <div class="play-icon"><svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="25" r="23" stroke-width="2"/><polygon points="20,15 38,25 20,35" fill="white" stroke="none"/></svg></div>
+        </div>
+        <div class="movie-info">
+          <div class="movie-tag">EPISODE</div>
+          <div class="movie-title">新世界 (SHINSEKAI) PRACTICE VIDEO｜PRODUCE 101 JAPAN 新世界
+</div>
+          <div class="movie-date">2026.03.25</div>
+          <div class="movie-desc">Fクラスのセンターで踊る亮賀くんの姿が楽しめます！</div>
         </div>
       </a>
       
@@ -892,14 +857,151 @@
     </div>
     <div class="contents-grid">
 
-      <a href="YOUR_POST_URL" target="_blank" class="contents-card reveal">
+      <a href="https://www.instagram.com/p/DT__-cID-LR/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
         <div class="contents-thumb">
-          <!-- <img src="images/contents1.jpg" alt="投稿サムネイル"> -->
+          <img src="images/contents/conceptphoto_1.jpeg" alt="投稿サムネイル">
           <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
           <div class="contents-platform instagram">INSTAGRAM</div>
         </div>
         <div class="contents-info">
-          <div class="contents-title">投稿タイトル・説明をここに記入</div>
+          <div class="contents-title">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗖𝗢𝗡𝗖𝗘𝗣𝗧 𝗣𝗢𝗦𝗧𝗘𝗥 📸 ⡱</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/reel/DUuYWqSEn0a/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/knockknock.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">KNOCK KNOCK</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/reel/DVYK1thCblj/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+         <img src="images/contents/visualalert.png" alt="投稿サムネイル"> -->
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">RYOGAのビジュアル良すぎ注意報✨️</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DWahxskCZBg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/101DAYLIVESTREAMING.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform youtube">YouTube</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">101DAY LIVE STREAMING<br>
+          亮賀くんの出番は28:00〜頃から。<br>
+          3ポーズを披露しますと言って、4ポーズも披露してくれるサービス精神旺盛な亮賀くんの姿が楽しめます。</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DVtGXyKiapB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/101day.JPG" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗕𝗘𝗛𝗜𝗡𝗗 𝗣𝗛𝗢𝗧𝗢 📸 ⡱<br>
+          記者発表会 - 101DAY</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DV2fLyYCclB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/whiteday.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗪𝗵𝗶𝘁𝗲 𝗗𝗮𝘆 💌 ⡱</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/reel/DWA0tAMko4l/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/shortgamechallenge.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗦𝗛𝗢𝗥𝗧 𝗚𝗔𝗠𝗘 𝗖𝗛𝗔𝗟𝗟𝗘𝗡𝗚𝗘 🎮⡱</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DWIZVj5iREM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/profilebehind.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗕𝗘𝗛𝗜𝗡𝗗 𝗣𝗛𝗢𝗧𝗢 📸 ⡱<br>
+            PROFILE PHOTO SHOOTING</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DWIZVj5iREM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/keywordgame.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗧𝗜𝗠𝗘 𝗔𝗧𝗧𝗔𝗖𝗞 𝗞𝗘𝗬𝗪𝗢𝗥𝗗 𝗚𝗔𝗠𝗘⌛️⚡️⡱</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DWagD-kiaL0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/shinsekaifilm1.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗙𝗜𝗟𝗠 🎞️ ⡱</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DWahxskCZBg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/shinsekaifilm2.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗙𝗜𝗟𝗠 🎞️ ⡱</div>
+          <div class="contents-arrow">投稿を見る</div>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/p/DWdvIQqCXZn/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="contents-card reveal">
+        <div class="contents-thumb">
+          <img src="images/contents/levelbehind.png" alt="投稿サムネイル">
+          <div class="contents-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="contents-platform instagram">INSTAGRAM</div>
+        </div>
+        <div class="contents-info">
+          <div class="contents-title">𝗦𝗛𝗜𝗡𝗦𝗘𝗞𝗔𝗜 𝗕𝗘𝗛𝗜𝗡𝗗 𝗣𝗛𝗢𝗧𝗢 📸 ⡱<br>
+            レベル分けテスト</div>
           <div class="contents-arrow">投稿を見る</div>
         </div>
       </a>
