@@ -1861,47 +1861,41 @@ document.getElementById('lightboxClose').addEventListener('click', () => lightbo
 lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
 
-  // ===== Countdown Timer =====
-// ↓ 投票終了日時を変更する場合はここを書き換え（JST）
+  // ===== Countdown Timer（毎日0時リセット） =====
+  const cdHours = document.getElementById('cdHours');
+  const cdMins  = document.getElementById('cdMins');
+  const cdSecs  = document.getElementById('cdSecs');
+  const cdLabel = document.getElementById('cdLabel');
 
-// ===== Countdown Timer（毎日0時リセット） =====
-const cdDays  = document.getElementById('cdDays');
-const cdHours = document.getElementById('cdHours');
-const cdMins  = document.getElementById('cdMins');
-const cdSecs  = document.getElementById('cdSecs');
-const cdUnits = document.getElementById('countdownUnits');
-const cdLabel = document.getElementById('cdLabel');
+  const cdLabels = {
+    ja: '本日の投票終了まで', ko: '오늘 투표 종료까지', en: "Today's vote resets in", zh: '今日投票截止倒计时'
+  };
 
-const cdLabels = {
-  ja: '本日の投票終了まで', ko: '오늘 투표 종료까지', en: 'Today\'s vote resets in', zh: '今日投票截止倒计时'
-};
+  function updateCountdown() {
+    const now  = new Date();
+    const lang = localStorage.getItem('ryoga_lang') || 'ja';
+    if (cdLabel) cdLabel.textContent = cdLabels[lang] || cdLabels.ja;
 
-function updateCountdown() {
-  const now  = new Date();
-  const lang = localStorage.getItem('ryoga_lang') || 'ja';
-  if (cdLabel) cdLabel.textContent = cdLabels[lang] || cdLabels.ja;
+    const jstOffset = 9 * 60 * 60 * 1000;
+    const nowJST = new Date(now.getTime() + jstOffset);
+    const midnight = new Date(Date.UTC(
+      nowJST.getUTCFullYear(),
+      nowJST.getUTCMonth(),
+      nowJST.getUTCDate() + 1,
+      -9, 0, 0, 0
+    ));
+    const diff = midnight - now;
 
-  // 次の0時を計算（JST = UTC+9）
-  const jstOffset = 9 * 60 * 60 * 1000;
-  const nowJST = new Date(now.getTime() + jstOffset);
-  const midnight = new Date(Date.UTC(
-    nowJST.getUTCFullYear(),
-    nowJST.getUTCMonth(),
-    nowJST.getUTCDate() + 1,
-    -9, 0, 0, 0  // 翌日0時JST = 前日15時UTC
-  ));
-  const diff = midnight - now;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
 
-  const h = Math.floor(diff / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-
-  if (cdHours) cdHours.textContent = String(h).padStart(2,'0');
-  if (cdMins)  cdMins.textContent  = String(m).padStart(2,'0');
-  if (cdSecs)  cdSecs.textContent  = String(s).padStart(2,'0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
+    if (cdHours) cdHours.textContent = String(h).padStart(2,'0');
+    if (cdMins)  cdMins.textContent  = String(m).padStart(2,'0');
+    if (cdSecs)  cdSecs.textContent  = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
   
   const banner = document.getElementById('vote-period-banner');
 
