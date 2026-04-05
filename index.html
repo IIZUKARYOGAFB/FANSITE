@@ -488,6 +488,15 @@
   .featured-label { font-family: var(--font-sub); font-size: 0.7rem; letter-spacing: 4px; font-weight: 700; color: var(--gold); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
   .featured-label::before { content: '★'; }
 
+  /* ===== GALLERY ===== */
+  #gallery { background: var(--bg); }
+  #gallery::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+  .gallery-desc { font-size: 0.82rem; color: var(--gray); line-height: 2; margin-bottom: 40px; border-left: 2px solid var(--blue-dark); padding-left: 16px; }
+  .gallery-desc strong { color: var(--white); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .gallery-post { background: var(--panel); border: 1px solid var(--border); overflow: hidden; min-height: 200px; }
+  @media (max-width: 600px) { .gallery-grid { grid-template-columns: 1fr; } }
+
   /* ===== CONTENTS ===== */
   #contents { background: var(--bg); }
   #contents::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
@@ -771,6 +780,7 @@
     <a href="#character">CHARACTER</a>
     <a href="#movie">MOVIE</a>
     <a href="#contents">CONTENTS</a>
+    <a href="#gallery">GALLERY</a>
     <a href="#projects">PROJECTS</a>
     <a href="#vote">VOTE</a>
     <a href="#community">COMMUNITY</a>
@@ -807,6 +817,7 @@
   <a href="#character" onclick="closeMobileMenu()">CHARACTER</a>
   <a href="#movie" onclick="closeMobileMenu()">MOVIE</a>
   <a href="#contents" onclick="closeMobileMenu()">CONTENTS</a>
+  <a href="#gallery" onclick="closeMobileMenu()">GALLERY</a>
   <a href="#projects" onclick="closeMobileMenu()">PROJECTS</a>
   <a href="#vote" onclick="closeMobileMenu()">VOTE</a>
   <a href="#community" onclick="closeMobileMenu()">COMMUNITY</a>
@@ -883,6 +894,76 @@
         </div>
       </div>
       <div class="hero-big-num">01</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT EPISODE BANNER -->
+<div class="next-ep">
+  <div class="next-ep-ticker-row">
+    <div class="ticker">
+      <span>＃飯塚亮賀 &nbsp;|&nbsp; <strong>PRODUCE 101 JAPAN 新世界</strong> &nbsp;|&nbsp; #りょがサポで亮賀にアシストを &nbsp;|&nbsp; #亮賀への愛がたいりょうが &nbsp;|&nbsp;</span>
+      <span>＃飯塚亮賀 &nbsp;|&nbsp; <strong>PRODUCE 101 JAPAN 新世界</strong> &nbsp;|&nbsp; #りょがサポで亮賀にアシストを &nbsp;|&nbsp; #亮賀への愛がたいりょうが &nbsp;|&nbsp;</span>
+    </div>
+  </div>
+  <div class="next-ep-body">
+    <div class="next-ep-label">NEXT BROADCAST</div>
+    <div class="next-ep-thumb no-img">
+      <div class="next-ep-thumb-placeholder">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+        THUMBNAIL
+      </div>
+    </div>
+    <div class="next-ep-content">
+      <div class="next-ep-date" data-i18n="nextep.date">4月9日（木） 21:00〜</div>
+      <div class="next-ep-title" data-i18n="nextep.title">次回予告：クラス再編成</div>
+      <div class="next-ep-desc" data-i18n-html="nextep.desc">
+        Fクラスという逆境からの再出発。悔しさを強さに変え、前を向いた亮賀を待ち受ける次なる試練、「グループバトル」。<br>
+        どん底から這い上がる、泥臭くも美しい逆襲のステージ。<br>
+        自分の限界を超えようともがく亮賀から、来週も目が離せない！<br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RANKING -->
+<section id="ranking">
+  <div class="ranking-inner">
+    <div class="ranking-head reveal">
+      <div class="ranking-title-wrap">
+        <div class="ranking-eyebrow" data-i18n="ranking.eyebrow">CURRENT RANKING</div>
+        <div class="ranking-title">RANKING</div>
+        <div class="ranking-updated" data-i18n="ranking.updated">※ 4/2 第1回投票 中間順位時点</div>
+      </div>
+      <div class="ranking-now">
+        <div class="rank-badge">
+          <div class="rank-label" data-i18n="ranking.now">CURRENT</div>
+          <div class="rank-num">10</div>
+          <div class="rank-unit" data-i18n="ranking.unit">位</div>
+        </div>
+        <div class="debut-info">
+          <div class="debut-line-label" data-i18n-html="ranking.debutDesc">
+            デビューできるのは上位 <strong>12名</strong> のみ。<br>
+            りょがサポでは【 常に1桁 】を目指します🔥
+          </div>
+          <a href="#vote" class="vote-cta-small" data-i18n="ranking.voteCta">★ 今すぐ投票する</a>
+        </div>
+      </div>
+    </div>
+    <div class="ranking-chart-wrap reveal">
+      <div class="chart-canvas-wrap">
+        <canvas id="rankChart"></canvas>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:var(--blue);"></div>
+          <span data-i18n="ranking.legendRank">亮賀くんの順位</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-line" style="background:var(--gold);border-top:2px dashed var(--gold);"></div>
+          <span data-i18n="ranking.legendDebut">デビューライン（12位）</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -967,84 +1048,6 @@
   </div>
 </div>
   
-<!-- NEXT EPISODE BANNER -->
-<div class="next-ep">
-  <!-- ティッカー行 -->
-  <div class="next-ep-ticker-row">
-    <div class="ticker">
-      <span>＃飯塚亮賀 &nbsp;|&nbsp; <strong>PRODUCE 101 JAPAN 新世界</strong> &nbsp;|&nbsp; #りょがサポで亮賀にアシストを &nbsp;|&nbsp; #亮賀への愛がたいりょうが &nbsp;|&nbsp;</span>
-      <span>＃飯塚亮賀 &nbsp;|&nbsp; <strong>PRODUCE 101 JAPAN 新世界</strong> &nbsp;|&nbsp; #りょがサポで亮賀にアシストを &nbsp;|&nbsp; #亮賀への愛がたいりょうが &nbsp;|&nbsp;</span>
-    </div>
-  </div>
-
-  <!-- メイン行 -->
-  <div class="next-ep-body">
-    <div class="next-ep-label">NEXT BROADCAST</div>
-
-    <!-- ↓ サムネイル画像。画像を入れる場合は img の src に URL を、alt にテキストを記入。
-         画像を使わない場合は <div class="next-ep-thumb no-img"> にして非表示にできます -->
-    <div class="next-ep-thumb no-img">
-      <div class="next-ep-thumb-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-        THUMBNAIL
-      </div>
-    </div>
-
-    <!-- テキストコンテンツ -->
-    <div class="next-ep-content">
-      <div class="next-ep-date" data-i18n="nextep.date">4月9日（木） 21:00〜</div>
-      <div class="next-ep-title" data-i18n="nextep.title">次回予告：クラス再編成</div>
-      <div class="next-ep-desc" data-i18n-html="nextep.desc">
-        Fクラスという逆境からの再出発。悔しさを強さに変え、前を向いた亮賀を待ち受ける次なる試練、「グループバトル」。<br>
-        どん底から這い上がる、泥臭くも美しい逆襲のステージ。<br>
-        自分の限界を超えようともがく亮賀から、来週も目が離せない！<br>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- RANKING -->
-<section id="ranking">
-  <div class="ranking-inner">
-    <div class="ranking-head reveal">
-      <div class="ranking-title-wrap">
-        <div class="ranking-eyebrow" data-i18n="ranking.eyebrow">CURRENT RANKING</div>
-        <div class="ranking-title">RANKING</div>
-        <div class="ranking-updated" data-i18n="ranking.updated">※ 4/2 第1回投票 中間順位時点</div>
-      </div>
-      <div class="ranking-now">
-        <div class="rank-badge">
-          <div class="rank-label" data-i18n="ranking.now">CURRENT</div>
-          <div class="rank-num">10</div>
-          <div class="rank-unit" data-i18n="ranking.unit">位</div>
-        </div>
-        <div class="debut-info">
-          <div class="debut-line-label" data-i18n-html="ranking.debutDesc">
-            デビューできるのは上位 <strong>12名</strong> のみ。<br>
-            まったく油断はできない順位です！ここから絶対に落とさず、更に順位を上げていく勢いで投票を頑張りましょう！
-          </div>
-          <a href="#vote" class="vote-cta-small" data-i18n="ranking.voteCta">★ 今すぐ投票する</a>
-        </div>
-      </div>
-    </div>
-    <div class="ranking-chart-wrap reveal">
-      <div class="chart-canvas-wrap">
-        <canvas id="rankChart"></canvas>
-      </div>
-      <div class="chart-legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--blue);"></div>
-          <span data-i18n="ranking.legendRank">亮賀くんの順位</span>
-        </div>
-        <div class="legend-item">
-          <div class="legend-line" style="background:var(--gold);border-top:2px dashed var(--gold);"></div>
-          <span data-i18n="ranking.legendDebut">デビューライン（12位）</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- STORY -->
 <section id="story">
   <div class="section-inner">
@@ -1454,6 +1457,57 @@
   </div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-num">05 — FAN GALLERY</div>
+      <div class="section-title" data-text="GALLERY">GALLERY</div>
+      <div class="section-title-jp" data-i18n="gallery.sub">ファン制作 布教画像ギャラリー</div>
+    </div>
+    <p class="gallery-desc reveal" data-i18n-html="gallery.desc">
+      飯塚亮賀くんを応援するファンの方々に制作いただいた布教画像です。<br><br>
+      本画像は、りょがサポの皆さまの布教活動の一環としてご自由に使用いただけます。<br>
+      <strong>加工やトリミングはご遠慮頂き、良識の範囲内でご利用ください⚽️🔥</strong>
+    </p>
+    <div class="gallery-grid">
+
+      <!-- ↓ 投稿追加方法: gallery-post ブロックごとコピーしてURLを変更 -->
+
+      <div class="gallery-post">
+        <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none">
+          <a href="https://x.com/IIZUKARYOGAFB/status/2039538319395344498/photo/1">投稿を読み込み中...</a>
+        </blockquote>
+      </div>
+
+      <div class="gallery-post">
+        <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none">
+          <a href="https://x.com/FD_RYOGA_JP/status/2040625473202348527/photo/1">投稿を読み込み中...</a>
+        </blockquote>
+      </div>
+
+      <div class="gallery-post">
+        <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none">
+          <a href="https://x.com/FD_RYOGA_JP/status/2040640574630273485/photo/1">投稿を読み込み中...</a>
+        </blockquote>
+      </div>
+
+      <div class="gallery-post">
+        <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none">
+          <a href="https://x.com/FD_RYOGA_JP/status/2040655673625547221/photo/1">投稿を読み込み中...</a>
+        </blockquote>
+      </div>
+
+      <div class="gallery-post">
+        <blockquote class="twitter-tweet" data-theme="dark" data-conversation="none">
+          <a href="https://x.com/FD_RYOGA_JP/status/2040670771584843950/photo/1">投稿を読み込み中...</a>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
@@ -1768,6 +1822,16 @@
         </div>
         <div class="sns-name" data-i18n="sns.lineName">飯塚亮賀くん応援オープンチャット</div>
         <div class="sns-desc" data-i18n="sns.lineDesc">最新情報をお届けするほか、情報共有・感想などりょがサポの皆さまでお話できる雑談ルームもあります。亮賀くんを応援する方大歓迎です！</div>
+        <div class="sns-action" data-i18n="sns.join">参加する</div>
+      </a>
+
+      <a href="https://t.co/AWlgPV5a76" target="_blank" class="sns-card line reveal">
+        <div class="sns-icon-wrap">
+          <div class="sns-icon">⚽</div>
+          <div class="sns-platform">LINE OPENCHAT / 1PICK</div>
+        </div>
+        <div class="sns-name" data-i18n="sns.onePickName">りょがサポ コアサポーターズ</div>
+        <div class="sns-desc" data-i18n="sns.onePickDesc">飯塚亮賀くん1Pick専用OCです。参加には飯塚亮賀くん1PickとわかるXアカウントのIDが必要となります。</div>
         <div class="sns-action" data-i18n="sns.join">参加する</div>
       </a>
 
@@ -2177,11 +2241,15 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.c
       'sns.marshmallowDesc':   'ご意見・お問い合わせはXのDMまたはこちらにお送りください',
       'sns.marshmallowAction': '送る',
       'footer.note':    'このサイトは有志ファンが運営する非公式ファンサイトです。<br>PRODUCE 101 JAPAN 新世界 および 飯塚亮賀くんの公式サイトではありません。<br>掲載内容に関するお問い合わせは <a href="#">こちら</a>',
+      'gallery.sub':  'ファン制作 布教画像ギャラリー',
+      'gallery.desc': '飯塚亮賀くんを応援するファンの方々に制作いただいた布教画像です。<br><br>本画像は、りょがサポの皆さまの布教活動の一環としてご自由に使用いただけます。<br><strong>加工やトリミングはご遠慮頂き、良識の範囲内でご利用ください⚽️🔥</strong>',
+      'sns.onePickName': 'りょがサポ コアサポーターズ',
+      'sns.onePickDesc': '飯塚亮賀くん1Pick専用OCです。参加には飯塚亮賀くん1PickとわかるXアカウントのIDが必要となります。',
       'ranking.eyebrow':    'CURRENT RANKING',
       'ranking.updated':    '※ 4/2 第1回投票 中間順位時点',
       'ranking.now':        'CURRENT',
       'ranking.unit':       '位',
-      'ranking.debutDesc':  'デビューできるのは上位 <strong>12名</strong> のみ。<br>まったく油断はできない順位です！ここから絶対に落とさず、更に順位を上げていく勢いで投票を頑張りましょう！',
+      'ranking.debutDesc':  'デビューできるのは上位 <strong>12名</strong> のみ。<br>りょがサポでは【 常に1桁 】を目指します🔥',
       'ranking.voteCta':    '★ 今すぐ投票する',
       'ranking.legendRank': '亮賀くんの順位',
       'ranking.legendDebut':'デビューライン（12位）',
@@ -2279,11 +2347,15 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.c
       'sns.marshmallowDesc':   'X DM 또는 마시멜로로 의견·문의를 보내주세요',
       'sns.marshmallowAction': '보내기',
       'footer.note': '이 사이트는 유지 팬이 운영하는 비공식 팬사이트입니다.<br>PRODUCE 101 JAPAN 신세계 및 이이즈카 료가의 공식 사이트가 아닙니다.<br>문의는 <a href="#">여기</a>',
+      'gallery.sub':  '팬 제작 포교 이미지 갤러리',
+      'gallery.desc': '이이즈카 료가를 응원하는 팬들이 제작한 포교 이미지입니다.<br><br>본 이미지는 팬 여러분의 포교 활동에 자유롭게 사용하실 수 있습니다.<br><strong>가공 및 트리밍은 삼가 주시고, 양식의 범위 내에서 이용해 주세요⚽️🔥</strong>',
+      'sns.onePickName': 'りょがサポ 코어 서포터즈',
+      'sns.onePickDesc': '이이즈카 료가 1Pick 전용 OC입니다. 참가에는 이이즈카 료가 1Pick임을 알 수 있는 X 계정 ID가 필요합니다.',
       'ranking.eyebrow':    'CURRENT RANKING',
       'ranking.updated':    '※ 4/2 제1회 투표 중간 순위 기준',
       'ranking.now':        'CURRENT',
       'ranking.unit':       '위',
-      'ranking.debutDesc':  '데뷔할 수 있는 것은 상위 <strong>12명</strong> 뿐.<br>절대 방심할 수 없는 순위입니다！여기서 절대 떨어지지 않고, 더욱 순위를 올려나가는 기세로 투표를 열심히 합시다！',
+      'ranking.debutDesc':  '데뷔할 수 있는 것은 상위 <strong>12명</strong> 뿐.<br>りょがサポ의 목표는 【 항상 한 자릿수 】🔥',
       'ranking.voteCta':    '★ 지금 바로 투표하기',
       'ranking.legendRank': '료가의 순위',
       'ranking.legendDebut':'데뷔 라인（12위）',
@@ -2381,11 +2453,15 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.c
       'sns.marshmallowDesc':   'Send us your questions or feedback via X DM or Marshmallow',
       'sns.marshmallowAction': 'Send',
       'footer.note': 'This is an unofficial fan site run by volunteer fans.<br>This is not the official site of PRODUCE 101 JAPAN SHINSEKAI or Ryoga Iizuka.<br>Contact: <a href="#">here</a>',
+      'gallery.sub':  'Fan-Made Spread Images Gallery',
+      'gallery.desc': 'These images were created by fans to support Ryoga Iizuka.<br><br>Feel free to use them for fan activities and promotion.<br><strong>Please do not edit or crop the images, and use them responsibly⚽️🔥</strong>',
+      'sns.onePickName': 'Ryoga Sapo Core Supporters',
+      'sns.onePickDesc': 'This is a 1Pick-only OpenChat for Ryoga Iizuka fans. An X account ID showing you are a Ryoga 1Pick fan is required to join.',
       'ranking.eyebrow':    'CURRENT RANKING',
       'ranking.updated':    '※ As of Round 1 Mid-Vote (4/2)',
       'ranking.now':        'CURRENT',
       'ranking.unit':       'PLACE',
-      'ranking.debutDesc':  'Only the top <strong>12</strong> trainees will debut.<br>This is no time to relax！Let\'s keep pushing harder — hold this position and climb even higher！',
+      'ranking.debutDesc':  'Only the top <strong>12</strong> trainees will debut.<br>Our goal is to keep Ryoga in the <strong>Top 9, always</strong>🔥',
       'ranking.voteCta':    '★ Vote Now',
       'ranking.legendRank': 'Ryoga\'s Ranking',
       'ranking.legendDebut':'Debut Line (12th)',
@@ -2483,11 +2559,15 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.c
       'sns.marshmallowDesc':   '欢迎通过X的DM或Marshmallow发送意见和咨询',
       'sns.marshmallowAction': '发送',
       'footer.note': '本站为粉丝自发运营的非官方粉丝网站。<br>非PRODUCE 101 JAPAN新世界及饭冢亮贺的官方网站。<br>联系：<a href="#">这里</a>',
+      'gallery.sub':  '粉丝制作安利图集',
+      'gallery.desc': '这些是支持饭冢亮贺的粉丝们制作的安利图片。<br><br>欢迎在粉丝活动中自由使用这些图片进行推广。<br><strong>请勿加工或裁剪图片，请在合理范围内使用⚽️🔥</strong>',
+      'sns.onePickName': 'りょがサポ 核心应援团',
+      'sns.onePickDesc': '这是仅限饭冢亮贺1Pick粉丝的开放聊天室。参加需要提供能证明您是饭冢亮贺1Pick的X账号ID。',
       'ranking.eyebrow':    'CURRENT RANKING',
       'ranking.updated':    '※ 截至4/2 第1次投票中间排名',
       'ranking.now':        'CURRENT',
       'ranking.unit':       '位',
-      'ranking.debutDesc':  '能够出道的只有前 <strong>12名</strong>。<br>完全不能掉以轻心的名次！绝对不能让排名下滑，要以更上一层楼的气势坚持投票！',
+      'ranking.debutDesc':  '能够出道的只有前 <strong>12名</strong>。<br>りょがサポ的目标是【 始终保持前9名 】🔥',
       'ranking.voteCta':    '★ 立即投票',
       'ranking.legendRank': '亮贺的排名',
       'ranking.legendDebut':'出道线（第12名）',
